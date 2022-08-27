@@ -1,0 +1,108 @@
+.grid-boxes{
+   position: relative;
+   top: 8rem;
+   margin-left: 9rem;
+   margin-right: 9rem;
+   margin-bottom: 15rem;
+   
+}
+.grid-items{
+    border-bottom: 1px solid #f89a00;
+    border-left: 1px solid #f89a00;
+    border-right: 1px solid #f89a00;
+    border-top: 4px solid #f89a00;
+    height: 200px;
+    
+}
+.collegeLogo{
+    display: flex;
+    align-items: center;
+    
+}
+ 
+.college-name-text{
+    font-size:1.1rem;
+    margin-left: 1rem;
+    text-align:start;
+    color: black;
+    font-family: "Poppins",sans-serif;
+}
+.clogo{
+    height: 50px;
+    width: 50px;
+}
+.admission-and-counselling>h1{
+   font-size: 1.78em;
+   font-weight: 600;
+   font-family: "Poppins",sans-serif;
+}
+.c-and-social{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+.socialLinks{
+    display: flex;
+    align-items: center;
+}
+.s-icons{
+    background-color: #f89a00;
+    margin: 0.5rem;
+    padding: 0.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.5s;
+    color: white;
+}
+.s-icons:nth-child(1){
+    background-color: #4267b2;
+}
+.s-icons:nth-child(1):hover{
+    background-color:transparent;
+    border:1px solid #4267b2;
+    color: #4267b2;
+    transition: 0.3s;
+}
+.s-icons:nth-child(2){
+    background-color: #e95950;
+}
+.s-icons:nth-child(2):hover{
+    background-color:transparent;
+    border:1px solid #e95950;
+    color: #e95950;
+    transition: 0.3s;
+}
+.s-icons:nth-child(3){
+    background-color: red;
+}
+.s-icons:nth-child(3):hover{
+    background-color:transparent;
+    border:1px solid red;
+    color: red;
+    transition: 0.3s;
+}
+ 
+.counselling-links{
+    display: flex;
+    align-items: center;
+    margin-top: 3.5rem;
+}
+.clickicon{
+    margin-bottom: 0.8rem;
+    color: #f89a00;
+}
+.counselling-links>a{
+    margin-left: 1rem;
+    color:rgb(68, 68, 255);
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+@media  (max-width:768px) {
+    .grid-boxes{
+        margin-left: 1rem;
+   margin-right: 1rem;
+    }
+    
+}

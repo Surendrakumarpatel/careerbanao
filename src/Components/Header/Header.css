@@ -1,0 +1,84 @@
+.header{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+     
+      
+}
+.about-company{
+    position: relative;
+    top: 8rem;
+    
+}
+.about-company>h1{
+  margin-bottom: 1.5rem;
+  font-size:2.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+.about-company>span{
+    font-size: 1.4rem;
+    font-family: 'Poppins', sans-serif;
+  }
+.counseling-img{
+    margin-top: 7rem;
+}
+
+
+.btn{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content:flex-start;
+    margin-top: 4rem;
+}
+.btn>button{
+    padding: 0.67rem;
+    font-size: 1rem;
+}
+.btn>button:nth-child(1){
+    width: 11rem;
+    background-color: #49387f;
+    margin-right: 1rem;
+}
+.btn>button:nth-child(2){
+    background-color: #fc8554;
+}
+ 
+
+@media (max-width: 768px){
+     .header{
+        align-items: center;
+        flex-direction: column;
+        padding: 1rem;
+     }
+     .about-company{
+         top: 6rem;
+     }
+     .about-company>h1{
+        font-size: 1.87rem;
+     }
+     .about-company>span{
+        font-size: 1rem;
+     }
+     .steps-to-reach-cb-text>p{
+        font-size: 1.5rem;
+     }
+     .sec_1_text>span>p{
+        font-size:30px;
+     }
+     .sec_1_text>h1{
+        font-size: 30px;
+     }
+     .sec_1_text>p{
+        font-size: 18px;
+     }
+     .counseling-img>img{
+         width: 20rem;
+     }
+     .sec_1_btn>button {
+        width:40%;
+     }
+      
+     
+}
+ 

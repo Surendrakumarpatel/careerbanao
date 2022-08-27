@@ -1,0 +1,73 @@
+.exam-link-component{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+.exams{
+    background-color: white;
+    margin: 1rem;
+    padding: 0.87rem;
+    display: flex;
+     
+}
+/* .exam-link{
+    width: 100%;
+}
+.college-img>img{
+    height: 100px;
+    width: 150px;
+    border-radius: 0.3rem;
+}
+.link>img{
+    height: 50px;
+    width: 50px;
+    margin-left: 1rem;
+    border-radius: 50%;
+}
+.link-and-text{
+    display: flex;
+    justify-content: space-between;
+}
+.link{
+    display: flex;
+}
+.link>p{
+    margin-left: 0.5rem;
+    text-transform: uppercase;
+}
+.exams-name{
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    text-transform: uppercase;
+}
+.exams-name>span{
+    font-size: 0.68rem;
+    color: gray;
+}
+.apply>button{
+    background-color: orange;
+    border: none;
+    padding-top:0.6rem;
+    padding-bottom:0.76rem;
+    padding-left: 3.87rem;
+    padding-right: 3.87rem;
+    font-size: 1.02rem;
+    text-transform: uppercase;
+    border-radius: 0.3rem;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+.css-i4bv87-MuiSvgIcon-root {
+    position: relative;
+    top: 0.4rem;
+}
+.last-date{
+    margin-left: 5rem;
+}
+.last-date>span{
+    color: gray;
+}
+  */

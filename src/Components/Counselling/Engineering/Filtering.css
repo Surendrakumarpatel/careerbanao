@@ -1,0 +1,55 @@
+.found-exams{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    margin: 1rem;
+    padding: 0.87rem;
+    border-top-left-radius: 0.5rem; 
+    border-top-right-radius: 0.5rem; 
+    text-transform: uppercase;
+    font-family: "Poppins",sans-serif;
+    font-size: 0.87rem;
+}
+.default-text{
+    color: #3f2952;
+    cursor: pointer;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-family: "Poppins",sans-serif;
+    font-size: 0.87rem;
+}
+.private-government{
+    margin-left: 1rem;
+}
+.college-type{
+    text-transform:uppercase;
+  
+}
+.gov,.priv{
+    padding: 7px 12px;
+    border: none;
+    border-radius: 1.76rem;
+    background-color: #3f2952;
+    color: white;
+    font-family: "Poppins",sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.colorChanged{
+    padding: 7px 12px;
+    border: none;
+    border-radius: 1.76rem;
+    background-color:white;
+    color: #3f2952;
+    font-family: "Poppins",sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+ 

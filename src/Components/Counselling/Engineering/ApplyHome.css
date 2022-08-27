@@ -1,0 +1,19 @@
+.applyhome{
+    position: relative;
+    top: 8rem;
+    
+}
+.letestnews{
+    display: flex;
+    background-color:#052963;
+    padding: 2rem;
+    align-items: center;
+    /* justify-content: center; */
+    color: #fff;
+    
+     
+}
+.news-text-1{
+    margin-left: 7rem;
+}
+ 

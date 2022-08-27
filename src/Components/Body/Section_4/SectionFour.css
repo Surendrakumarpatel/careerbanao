@@ -1,0 +1,97 @@
+
+.center{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    margin-top: 6rem;
+    
+}
+
+.contact-us-img{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+.cu-img>img{
+    width: 250px;
+    height: 250px;
+}
+.MuiPaper-elevation{
+    width: 100%;
+}
+.whatsapp-chat,.voice-calls,.ftf{
+    margin-inline-end: 0.5rem;
+    border-radius: 0.5rem;
+    width: 28%;
+    height: 20vh;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+.whatsapp-chat:hover,.voice-calls:hover,.ftf:hover{
+    cursor: pointer;
+    background-color: whitesmoke;
+    box-shadow: none;
+}
+.headings{
+    color: #302664;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 40px;
+    padding-left: 10px;
+}
+.para{
+    padding-left: 10px;
+    font-family: "Poppins", sans-serif;
+    color: #747474;
+    font-size: 14px;
+}
+.whatsapp-chat>img{
+    width: 5rem;
+    height: 5rem;
+}
+.voice-calls>img{
+    width: 5.5rem;
+    height: 5.5rem;
+}
+.ftf>img{
+    width: 4.8rem;
+    height:4.8rem; 
+}
+.icons{
+    color: purple;
+    width: 5rem;
+}
+
+.user-information{
+    display: flex;
+    flex-direction: column;
+}
+.input-data{
+    margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px){
+     .center{
+        flex-direction: column;
+        
+     }
+     .whatsapp-chat,.voice-calls,.ftf{
+        width: 100%;
+     }
+     .contact-us-img{
+        flex-direction: column;
+     }
+     .cu-img>img{
+        height: 170px;
+        width: 170px;
+     }
+}
+ 
+ 
+ 
