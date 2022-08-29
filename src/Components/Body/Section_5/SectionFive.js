@@ -33,7 +33,7 @@ function SectionFive() {
             <h3>Yha Name Ayega</h3>
             <h4>Yha College Name Ayega</h4>
             <p>
-              During B.Tech, I found it difficult to cope up with studies and hence, fell into a spiral of negative thinking and despair. Several backlogs in B.Tech had left me very worried and my life was miserable. When I got to know about YourDOST, I signed up on the website. Earlier, I was a bit hesitant in opening up but they made me comfortable. The counsellors helped me find the root cause of my issues, suggested techniques to overcome stress and negative thinking.
+              During B.Tech, I found it difficult to cope up with studies and hence, fell into a spiral of negative thinking and despair. Several backlogs in B.Tech had left me very worried and my life was miserable. 
             </p>
           </div>
         </div>
@@ -44,7 +44,7 @@ function SectionFive() {
             <h3>Yha Name Ayega</h3>
             <h4>Yha College Name Ayega</h4>
             <p>
-              During B.Tech, I found it difficult to cope up with studies and hence, fell into a spiral of negative thinking and despair. Several backlogs in B.Tech had left me very worried and my life was miserable. When I got to know about YourDOST, I signed up on the website. Earlier, I was a bit hesitant in opening up but they made me comfortable. The counsellors helped me find the root cause of my issues, suggested techniques to overcome stress and negative thinking.
+              During B.Tech, I found it difficult to cope up with studies and hence, fell into a spiral of negative thinking and despair. 
             </p>
           </div>
         </div>
@@ -55,7 +55,7 @@ function SectionFive() {
             <h3>Yha Name Ayega</h3>
             <h4>Yha College Name Ayega</h4>
             <p>
-              During B.Tech, I found it difficult to cope up with studies and hence, fell into a spiral of negative thinking and despair. Several backlogs in B.Tech had left me very worried and my life was miserable. When I got to know about YourDOST, I signed up on the website. Earlier, I was a bit hesitant in opening up but they made me comfortable. The counsellors helped me find the root cause of my issues, suggested techniques to overcome stress and negative thinking.
+              During B.Tech, I found it difficult to cope up with studies and hence.
             </p>
           </div>
         </div>
@@ -66,7 +66,7 @@ function SectionFive() {
             <h3>Yha Name Ayega</h3>
             <h4>Yha College Name Ayega</h4>
             <p>
-              During B.Tech, I found it difficult to cope up with studies and hence, fell into a spiral of negative thinking and despair. Several backlogs in B.Tech had left me very worried and my life was miserable. When I got to know about YourDOST, I signed up on the website. Earlier, I was a bit hesitant in opening up but they made me comfortable. The counsellors helped me find the root cause of my issues, suggested techniques to overcome stress and negative thinking.
+              During B.Tech, I found it difficult to cope up with studies and hence, fell into a spiral of negative thinking and despair. Several backlogs in B.Tech had left me very worried and my life was miserable. When I got to know about YourDOST, I signed up on the website. Earlier,  
             </p>
           </div>
         </div>

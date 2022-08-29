@@ -11,25 +11,24 @@ function EngineeringCounselling() {
 
 
   const sendingData = (categData) => {
-  
+
     const updateData = Menu.filter((ele) => {
       return ele.category === categData;
     });
     setItems(updateData);
-     
+
   }
- 
+
   return (
     <div className='engineering-c'>
       <ResNavbar />
       <div className='exam-section'>
         <div className='filter-collegeExam'>
-
           <div className='fil'><Filtering sendingData={sendingData} Menu={Menu} setItems={setItems} /></div>
           <div className='multiple'>
             {
               items.map((item) => {
-                const {CollegeImg, CollegeName, ExamName, ExamLogo,
+                const { CollegeImg, CollegeName, ExamName, ExamLogo,
                   ExamsLink, CollegeAddress, LastDate, category } = item;
                 return (
                   <>
@@ -54,7 +53,7 @@ function EngineeringCounselling() {
           </div>
         </div>
       </div>
-    <Footer />
+      <Footer />
     </div>
   )
 }

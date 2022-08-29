@@ -15,6 +15,7 @@
 .link-and-text{
     display: flex;
     justify-content: space-between;
+    
 }
 .link{
     display: flex;
@@ -36,11 +37,13 @@
 .apply>button{
     background-color: orange;
     border: none;
+    margin-top: 2rem;
+    text-align: center;
     padding-top:0.6rem;
     padding-bottom:0.76rem;
-    padding-left: 3.87rem;
-    padding-right: 3.87rem;
-    font-size: 1.02rem;
+    padding-left: 2.78rem;
+    padding-right: 2.78rem;
+    font-size: 1rem;
     text-transform: uppercase;
     border-radius: 0.3rem;
     color: white;
@@ -49,6 +52,7 @@
 }
 .apply>button>a{
     color: white !important;
+    
      
 }
 .css-i4bv87-MuiSvgIcon-root {
@@ -62,3 +66,18 @@
     color: gray;
 }
  
+@media (max-width:768px) {
+    .link-and-text {
+        flex-direction: column;
+    }
+    .last-date{
+      margin-left: 0;
+    }
+    .last-date>span{
+       margin-left: 5rem;   
+    } 
+    .apply{
+        margin: auto;
+       
+    }
+}

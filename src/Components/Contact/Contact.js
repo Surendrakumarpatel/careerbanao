@@ -27,8 +27,8 @@ function Contact() {
                         <div className="email details">
                             <MailIcon className="fas fa-envelope" />
                             <div className="topic">Email</div>
-                            <div className="text-one">codinglab@gmail.com</div>
-                            <div className="text-two">info.codinglab@gmail.com</div>
+                            <div className="text-one">careerbanao@gmail.com</div>
+                            <div className="text-two">info.careerbanao@gmail.com</div>
                         </div>
                     </div>
                     <div className="right-side">

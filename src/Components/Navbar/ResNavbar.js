@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./ResNavbar.css";
 import {motion} from "framer-motion";
@@ -26,6 +26,11 @@ const container = {
   
 
 function ResNavbar() {
+    const [visit, setVisit] = useState(false);
+     const visited = () =>{
+        console.log("ho gya kaam");
+        setVisit(true);
+     }
     const [navbar, setNavbar] = useState(false);
     const changeBackgroundColor = () => {
         if (window.scrollY >= 64) {
@@ -35,6 +40,8 @@ function ResNavbar() {
         }
 
     }
+    console.log("checking color: "+ visit);
+    
     window.addEventListener("scroll", changeBackgroundColor);
 
     return (
@@ -59,16 +66,25 @@ function ResNavbar() {
                         <motion.li className="services"
                         variants={item}
                         >
-                            <li>Application</li>
+                            <a className = {visit ? "visited-1" :"random"}>Application</a>
                             <ul className="dropdown" >
-                                <li><Link style={{ color: "white" }} to="/engineering">Engineering</Link></li>
-                                <li><Link style={{ color: "white" }} to="/medical">Medical</Link></li>
+                                <li ><Link onClick={visited} style={{ color: "white" }} to="/engineering">Engineering</Link></li>
+                                <li onClick={visited}><Link style={{ color: "white" }} to="/medical">Medical</Link></li>
                             </ul>
                         </motion.li>
                         <motion.li className="services"
                         variants={item}
                         >
-                            <li>Result</li>
+                            <a className="visited-2">Admit Card</a>
+                            <ul className="dropdown">
+                                <li><Link style={{ color: "white" }} to="/engineeringadmitcard">Engineering</Link></li>
+                                <li><Link style={{ color: "white" }} to="/medicaladmitcard">Medical</Link></li>
+                            </ul>
+                        </motion.li>
+                        <motion.li className="services"
+                        variants={item}
+                        >
+                            <a className="visited-3">Result</a>
                             {/* <!-- DROPDOWN MENU --> */}
                             <ul className="dropdown">
                                 <li><Link style={{ color: "white" }} to="/engineeringresult">Engineering</Link></li>
@@ -78,24 +94,15 @@ function ResNavbar() {
                         <motion.li className="services"
                         variants={item}
                         >
-                            <li>Admit Card</li>
-                            <ul className="dropdown">
-                                <li><Link style={{ color: "white" }} to="/engineeringadmitcard">Engineering</Link></li>
-                                <li><Link style={{ color: "white" }} to="/medicaladmitcard">Medical</Link></li>
-                            </ul>
-                        </motion.li>
-                        <motion.li className="services"
-                        variants={item}
-                        >
-                            <li>Counselling</li>
+                            <a className="visited-4">Counselling</a>
                             <ul className="dropdown">
                                 <li><Link style={{ color: "white" }} to="/counselling">Engineering</Link></li>
-                                <li><Link style={{ color: "white" }} to="/">Medical</Link></li>
+                                <li><Link style={{ color: "white" }} to="/counselling">Medical</Link></li>
                             </ul>
                         </motion.li>
                         <motion.li
                         variants={item}
-                        ><li>Contact</li></motion.li>
+                        ><Link to="/contact" className="visited-5">Contact</Link></motion.li>
                         <div className='login_signup'>
                             <button>Login</button>
                         </div>

@@ -47,6 +47,10 @@ li{
    .services {
     position: relative; 
    }
+   .services>a{
+    cursor: pointer;
+   }
+ 
    .dropdown {
     /* background-color: rgb(1, 139, 139); */
     background-color:#3f2952;
