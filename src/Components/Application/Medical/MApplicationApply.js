@@ -24,7 +24,6 @@ function MApplicationApply() {
       
     }, []);
     
-    
     return (
         <div>
             <ResNavbar />
