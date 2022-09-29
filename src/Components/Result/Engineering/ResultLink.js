@@ -1,6 +1,6 @@
 import React from 'react'
  
-function ResultLink({ExamLogo,ExamName,ExamsLink,CollegeAddress}) {
+function ResultLink({ExamLogo,ExamName,web_link,CollegeAddress}) {
   return (
     <div className='exam-link'> 
         <div className='link-and-text'>
@@ -12,10 +12,9 @@ function ResultLink({ExamLogo,ExamName,ExamsLink,CollegeAddress}) {
             </div>
           </div>
           <div className='apply'>
-             <button><a style={{color:"black"}} href={ExamsLink}>Result</a></button>
+             <a href = {web_link} style={{color:"black"}} ><button>Result</button></a>
           </div>
         </div>
-         
     </div>
   )
 }

@@ -1,12 +1,12 @@
-import React from 'react' 
-import AcLink from './AcLink'
+import React from 'react';
+import AcLink from './AcLink';
  
 
-function Results({CollegeImg,ExamLogo,ExamName,ExamsLink,CollegeAddress,category}) {
+function Ac({CollegeImg,ExamLogo,ExamName,ExamsLink,CollegeAddress,category}) {
     return (
         <div className='exams'>
             <div className='college-img'>
-                <img src={CollegeImg} />
+                {/* <img src={CollegeImg} /> */}
             </div>
             <AcLink
                 ExamLogo={ExamLogo}
@@ -20,4 +20,4 @@ function Results({CollegeImg,ExamLogo,ExamName,ExamsLink,CollegeAddress,category
     )
 }
 
-export default Results
+export default Ac

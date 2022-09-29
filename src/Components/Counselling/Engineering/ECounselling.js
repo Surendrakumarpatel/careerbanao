@@ -1,16 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import "./ECounselling.css";
 import ResNavbar from '../../Navbar/ResNavbar';
-import Menu from './ExamData';
-import SwipeRightIcon from '@mui/icons-material/SwipeRight';
 import Footer from '../../Body/Section_6/Footer';
-import { Link } from 'react-router-dom';
-import Data from './ECounsellingData';
-
+import ECounsellingLink from './ECounsellingLink';
+ 
 function ECounselling() {
-    const [counsellingData, setCounsellingData] = useState(Data);
+   const [eCounsellingData, setECounsellingData] = useState([]);
+   useEffect(() => {
+    axios.get("https://kalkaprasad.com/careerbanao/index.php/APIBase/getCounslingDetails").then((res, req) => {
+     console.log(res.data);
+     setECounsellingData(res.data); 
+      
+    }).catch((err) => {
+      console.log(err);
+    })
+    
+  }, []);
 
-    return (
+   return (
         <div>
             <ResNavbar />
             <div className="grid-boxes">
@@ -18,58 +26,21 @@ function ECounselling() {
                     <div className='admission-and-counselling'><h1>Admission And Counselling</h1></div>
                     <div class="grid">
                         {
-                            counsellingData.map((items) => {
-                                const { collegeName, collegeLogo, counsellingUrl } = items;
+                            eCounsellingData.map((items) => {
+                                const { college_name, college_logo,web_link, lates_news, new_event,introduction } = items;
                                 return (
-                                    <div className='box-1'>
-                                        <div className="collegeLogo ">
-                                            <div><img className='clogo' src={Menu[2].ExamLogo}></img></div>
-                                            <div><h1 className='college-name-text'>{collegeName}</h1>
-                                            </div>
-                                        </div>
-                                        <div className="counselling-links">
-                                            <SwipeRightIcon className="clickicon" />
-                                            <Link to="/applyhome">{counsellingUrl}</Link>
-                                        </div>
-                                    </div>
+                                     <ECounsellingLink
+                                     college_logo={college_logo}
+                                     college_name = {college_name}
+                                     Intro = {introduction}
+                                     latest_news = {lates_news}
+                                     news_event = {new_event}
+                                     apply_link = {web_link}
+                                     />
                                 );
                             })
                         }
-
-                        {/* <div className='box-1'>
-                            <div className="collegeLogo ">
-                                <div><img className='clogo' src={Menu[2].ExamLogo}></img></div>
-                                <div><h1 className='college-name-text'>Indian Institute of technology Bombay.</h1>
-                                </div>
-                            </div>
-                            <div className="counselling-links">
-                                <SwipeRightIcon className="clickicon" />
-                                <Link to="/applyhome">IIT Bomabay Counselling through JOSSA</Link>
-                            </div>
-                        </div>
-                        <div className='box-1'>
-                            <div className="collegeLogo ">
-                                <div><img className='clogo' src={Menu[2].ExamLogo}></img></div>
-                                <div><h1 className='college-name-text'>Indian Institute of technology Bombay.</h1>
-                                </div>
-                            </div>
-                            <div className="counselling-links">
-                                <SwipeRightIcon className="clickicon" />
-                                <Link to="/applyhome">IIT Bomabay Counselling through JOSSA</Link>
-                            </div>
-                        </div>
-                        <div className='box-1'>
-                            <div className="collegeLogo ">
-                                <div><img className='clogo' src={Menu[2].ExamLogo}></img></div>
-                                <div><h1 className='college-name-text'>Indian Institute of technology Bombay.</h1>
-                                </div>
-                            </div>
-                            <div className="counselling-links">
-                                <SwipeRightIcon className="clickicon" />
-                                <Link to="/applyhome">IIT Bomabay Counselling through JOSSA</Link>
-                            </div>
-                        </div> */}
-                    </div>
+                 </div>
                 </div>
             </div>
             <Footer />

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './SectionFour.css';
+// import { useNavigate } from 'react-router-dom';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import VoiceChatIcon from '@mui/icons-material/VoiceChat';
 import Whatsapp from "../../utils/whatsapp.png";
@@ -13,35 +14,80 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { Button, TextField } from '@mui/material';
 import Contact from "../../utils/contact.png";
+import axios from 'axios';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 function SectionFour() {
+  // const URL = "https://kalkaprasad.com/careerbanao/index.php/APIBase/homeAPI";
+  const URL = "http://localhost:3005/videocalls"; // testing purpuse
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    type: "",
+    comment: "",
+
+  });
+  const changeEventHandler = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setUserInfo({ ...userInfo, [name]: value });
+  }
+
+  const [whatsappLink, setWhatsappLink] = useState("");
   const [open, setOpen] = React.useState(false);
+
+  useEffect(() => {
+    axios.get("https://kalkaprasad.com/careerbanao/index.php/APIBase/getWhatsAppURL").then((res, req) => {
+      const wtlink = res.data[0].whatsApp_link;
+      setWhatsappLink(wtlink);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }, []);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
-  
+
+  const submitData = async (e) => {
+    e.preventDefault();
+    await axios.post(URL, userInfo).then((res) => {
+      alert(res.data);
+    }).catch((err) => {
+      console.log(err);
+    })
+    setUserInfo({
+      name: "",
+      email: "",
+      phone: "",
+      type: "",
+      comment: ""
+    })
+
+  }
+
   return (
     <div className='video-calls'>
       <div className='center'>
-        <div className='whatsapp-chat'>
-          <img src={Whatsapp} />
-          <div>
-            <p className='headings'>WhatsApp Chat</p>
-            <p className='para'>Chat anonymously with an expert of your choice. This service is available to you anytime,anywhere.</p>
+        <a href={`${whatsappLink}`} className='whatsapp-chat'>
+          <div className='inside-whatsapp-chat'>
+            <img src={Whatsapp} alt="whatsapp" />
+            <div>
+              <p className='headings'>WhatsApp Chat</p>
+              <p className='para'>Chat anonymously with an expert of your choice. This service is available to you anytime,anywhere.</p>
+            </div>
           </div>
-        </div>
+        </a>
         <div className='voice-calls' onClick={handleClickOpen}>
           {/* <VoiceChatIcon style={{fontSize:"2.5rem" , color:"green"}} /> */}
-          <img src={VideoCalls} />
+          <img src={VideoCalls} alt="whatsapp" />
           <div>
             <p className='headings'>Voice/Video Calls</p>
             <p className='para'>Speak to our experts or get on a call with them. Get personalized attention right when you need it.</p>
@@ -49,7 +95,7 @@ function SectionFour() {
         </div>
         <div className='ftf' onClick={handleClickOpen}>
           {/* <WhatsAppIcon style={{fontSize:"2.5rem", color:"green"}} /> */}
-          <img src={FTF} />
+          <img src={FTF} alt="whatsapp" />
           <div>
             <p className='headings'>Face to Face Sessions</p>
             <p className='para'>Connect 1-on-1 in-person with an expert of your choice.</p>
@@ -63,24 +109,24 @@ function SectionFour() {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle style={{textAlign:"center",fontFamily:"Poppins",fontWeight:"600"}}>{"User's Information"}</DialogTitle>
+        <DialogTitle style={{ textAlign: "center", fontFamily: "Poppins", fontWeight: "600" }}>{"User's Information"}</DialogTitle>
         <DialogContent>
           <DialogContentText className="contact-us-img" id="alert-dialog-slide-description">
             <div className='cu-img'>
-              <img src = {Contact}></img>
+              <img src={Contact} alt="whatsapp"></img>
             </div>
-            <form className='user-information'>
-              <TextField style={{marginTop:"0.5rem"}} required type="text" id="standard-basic" label="Name" variant="standard" />
-              <TextField style={{marginTop:"0.5rem"}} required minlength="10" maxlength="10" type="tel" id="standard-basic" label="Phone" variant="standard" />
-              <TextField style={{marginTop:"0.5rem"}} required type="email" id="standard-basic" label="Email" variant="standard" />
-              <Button style={{marginTop:"1rem",color:"white", background:"#49387f"}} onClick={handleClose}>Submit</Button>
+            <form onSubmit={submitData} className='user-information' >
+              <TextField onChange={changeEventHandler} value={userInfo.name} name="name" style={{ marginTop: "0.5rem" }} required type="text" id="standard-basic" label="Name" variant="standard" />
+              <TextField onChange={changeEventHandler} value={userInfo.phone} name="phone" style={{ marginTop: "0.5rem" }} required minlength="10" maxlength="10" type="tel" id="standard-basic" label="Phone" variant="standard" />
+              <TextField onChange={changeEventHandler} value={userInfo.email} name="email" style={{ marginTop: "0.5rem" }} required type="email" id="standard-basic" label="Email" variant="standard" />
+              <Button onClick={handleClose} type="submit" style={{ marginTop: "2rem", color: "white", background: "#49387f" }}>Submit</Button>
             </form>
           </DialogContentText>
         </DialogContent>
-         
+
       </Dialog>
     </div>
   )
 }
 
-export default SectionFour
+export default SectionFour;

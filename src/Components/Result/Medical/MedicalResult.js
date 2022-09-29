@@ -1,23 +1,25 @@
-import React,{useState} from 'react'
-import Menu from '../../Counselling/Engineering/ExamData';
-// import Exams from '../../Counselling/Engineering/Exams';
-import Filtering from '../../Counselling/Engineering/Filtering';
+import React,{useState, useEffect} from 'react';
+import axios from "axios";
+import Filtering from '../../Application/Engineering/Filtering';
 import ResNavbar from '../../Navbar/ResNavbar';
-import Results from './MedicalResults';
+// import Results from './MedicalResults';
+import MedicalResults from './MedicalResults';
 
 function MedicalResult() {
-
-  const [items, setItems] = useState(Menu);
-
-
-  const sendingData = (categData) => {
+ const [mResult, setMResult] = useState([]);
   
-    const updateData = Menu.filter((ele) => {
-      return ele.category === categData;
-    });
-    setItems(updateData);
-     
-  }
+  const gettingCategory =  (categData) =>{
+    getApiData(categData);
+ }
+
+ const getApiData = async (categData) => {
+    await axios.get(`https://kalkaprasad.com/careerbanao/index.php/APIBase/getResultMed?category=${categData}`).then((res, req)=>{
+      setMResult(res.data);
+   });
+ }
+ useEffect(() => {
+   getApiData("");
+ }, []);
 
   return (
     <div className='engineering-c'>
@@ -25,23 +27,21 @@ function MedicalResult() {
       <div className='exam-section'>
         <div className='filter-collegeExam'>
 
-          <div className='fil'><Filtering sendingData={sendingData} Menu={Menu} setItems={setItems} /></div>
+          <div className='fil'><Filtering gettingCategory = { gettingCategory } mResult={mResult} setMResult={setMResult} /></div>
           <div className='multiple'>
             {
-              items.map((item) => {
-                const {CollegeImg, CollegeName, ExamName, ExamLogo,
-                  ExamsLink, CollegeAddress, category } = item;
+              mResult.map((item) => {
+                const { college_logo, college_name,web_link, college_category, college_address} = item;
                 return (
                   <>
-                    <div className='exm'><Results
-                      CollegeName={CollegeName}
-                      CollegeImg={CollegeImg}
-                      ExamLogo={ExamLogo}
-                      ExamName={ExamName}
-                      ExamsLink={ExamsLink}
-                      CollegeAddress={CollegeAddress}
-                      
-                      category={category}
+                    <div className='exm'><MedicalResults
+                      // CollegeName={CollegeName}
+                      // CollegeImg={CollegeImg}
+                      ExamLogo={college_logo}
+                      ExamName={college_name}
+                      ExamsLink={web_link}
+                      CollegeAddress={college_address}
+                      category={college_category}
                     /></div>
 
                   </>

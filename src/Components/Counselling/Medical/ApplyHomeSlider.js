@@ -4,7 +4,7 @@ import "./ApplyHomeSlider.css";
 // import Img_1 from "../../utils/apply-1.svg";
  
 function ApplyHomeSlider() {
-    const [banner, setBanner] = useState("https://unsplash.com/blog/content/images/size/w600/2022/06/A_look_back_at_May_-Blog--1.jpeg")
+    const [banner, setBanner] = useState("loading...")
     useEffect(()=>{
        axios.get("https://kalkaprasad.com/careerbanao/index.php/APIBase/getBanner",).then((res)=>{
          setBanner(res.data);

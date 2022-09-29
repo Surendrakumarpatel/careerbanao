@@ -1,0 +1,27 @@
+.apply-home-slider{
+    position: relative;
+    top: 4rem;
+}
+.apply-home-slider>img{
+    max-width: 100%;
+    height: auto;
+}
+ 
+
+@media (max-width:768px){
+    .news-text-1{
+        margin-left: 0px !important;
+        width: 80% !important;
+    }
+    .news-text-1>h1{
+        font-size: 22px;
+    }
+    .news-and-events {
+        margin-left: 0rem !important;
+        margin-top: 2rem;
+    }
+    .news-and-events>ul{
+        margin-top: 0.5rem;
+    }
+}
+ 

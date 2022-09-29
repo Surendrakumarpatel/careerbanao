@@ -1,17 +1,17 @@
 import React from 'react'
-import ExamLink from '../../Counselling/Engineering/ExamLink'
+// import ExamLink from '../../Counselling/Engineering/ExamLink'
 import ResultLink from './ResultLink'
 
-function Results({CollegeImg,ExamLogo,ExamName,ExamsLink,CollegeAddress,category}) {
+function Results({ExamLogo,ExamName, web_link,CollegeAddress,category}) {
     return (
         <div className='exams'>
             <div className='college-img'>
-                <img src={CollegeImg} />
+                {/* <img src={CollegeImg} /> */}
             </div>
             <ResultLink
                 ExamLogo={ExamLogo}
                 ExamName={ExamName}
-                ExamsLink={ExamsLink}
+                web_link={web_link}
                 CollegeAddress={CollegeAddress}
                 category={category}
             />

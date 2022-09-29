@@ -1,14 +1,15 @@
 import React from 'react'
+import MedicalResultLink from './MedicalResultLink'
 // import ExamLink from '../../Counselling/Engineering/ExamLink'
 import ResultLink from './MedicalResultLink'
 
-function MedicalResults({CollegeImg,ExamLogo,ExamName,ExamsLink,CollegeAddress,category}) {
+function MedicalResults({ExamLogo,ExamName,ExamsLink,CollegeAddress,category}) {
     return (
         <div className='exams'>
             <div className='college-img'>
-                <img src={CollegeImg} />
+                {/* <img src={CollegeImg} /> */}
             </div>
-            <ResultLink
+            <MedicalResultLink
                 ExamLogo={ExamLogo}
                 ExamName={ExamName}
                 ExamsLink={ExamsLink}

@@ -28,20 +28,18 @@ const container = {
 function ResNavbar() {
     const [visit, setVisit] = useState(false);
      const visited = () =>{
-        console.log("ho gya kaam");
+       
         setVisit(true);
      }
     const [navbar, setNavbar] = useState(false);
     const changeBackgroundColor = () => {
-        if (window.scrollY >= 64) {
+        if (window.scrollY >= 54) {
             setNavbar(true);
         } else {
             setNavbar(false);
         }
 
     }
-    console.log("checking color: "+ visit);
-    
     window.addEventListener("scroll", changeBackgroundColor);
 
     return (
@@ -96,13 +94,13 @@ function ResNavbar() {
                         >
                             <a className="visited-4">Counselling</a>
                             <ul className="dropdown">
-                                <li><Link style={{ color: "white" }} to="/counselling">Engineering</Link></li>
-                                <li><Link style={{ color: "white" }} to="/counselling">Medical</Link></li>
+                                <li><Link style={{ color: "white" }} to="/ecounselling">Engineering</Link></li>
+                                <li><Link style={{ color: "white" }} to="/mcounselling">Medical</Link></li>
                             </ul>
                         </motion.li>
                         <motion.li
                         variants={item}
-                        ><Link to="/contact" className="visited-5">Contact</Link></motion.li>
+                        ><Link to="/homeAPI" className="visited-5">Contact</Link></motion.li>
                         <div className='login_signup'>
                             <button>Login</button>
                         </div>

@@ -12,7 +12,7 @@ function AcLink({ExamLogo,ExamName,ExamsLink,CollegeAddress}) {
             </div>
           </div>
           <div className='apply'>
-             <button><a style={{color:"black"}} href={ExamsLink}>Admit card</a></button>
+             <a style={{color:"black"}} href={ExamsLink}><button>Admit card</button></a>
           </div>
         </div>
          

@@ -12,7 +12,7 @@ function MedicalResultLink({ExamLogo,ExamName,ExamsLink,CollegeAddress}) {
             </div>
           </div>
           <div className='apply'>
-             <button><a style={{color:"black"}} href={ExamsLink}>Result</a></button>
+             <a style={{color:"black"}} href={ExamsLink}><button>Result</button></a>
           </div>
         </div>
          

@@ -5,6 +5,7 @@
 .testimonials{
   text-align: center;
   margin-top: 5rem;
+  margin-bottom: 2rem;
 }
 .testimonials>h1{
   font-family: "Poppins",sans-serif;
@@ -131,10 +132,17 @@
     /* border: 1px solid #ddd; */
      
   }
-  .t-img{
+  .myCarousel>h3{
+    margin-top: 1.2rem;
+  }
+  .myCarousel>p{
+    margin-top: 0.5rem;
+    
+  }
+  /* .t-img{
     width: 150px !important;
     height: 150px !important;
-  }
+  }  */
 
   .carousel .slide img {
     width: 24% !important;
@@ -142,8 +150,11 @@
   }
 }
 .t-img{
-  width: 100px;
-  height: 130px;
+  width: 100px !important;
+  height: 130px !important;
+}
+.referFriends{
+  text-align: center;
 }
 .refer{
   color: #49377E;
@@ -153,7 +164,7 @@
     border-radius: 7px;
     padding: 13px 28px;
     cursor: pointer;
-    margin-right: 16px;
+    /* margin-right: 16px; */
 }
 .refer:hover{
   background-color: #49377E;
@@ -166,4 +177,8 @@
   .carousel .control-dots{
      display: none;
    }
+   .t-img{
+    width: 100px !important;
+    height: 90px !important;
+  }
 }

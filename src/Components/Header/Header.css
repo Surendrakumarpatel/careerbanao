@@ -35,14 +35,19 @@
     padding: 0.67rem;
     font-size: 1rem;
 }
-.btn>button:nth-child(1){
+.btn> a > button:nth-child(1){
     width: 11rem;
+    height: 3rem;
     background-color: #49387f;
     margin-right: 1rem;
 }
-.btn>button:nth-child(2){
-    background-color: #fc8554;
+a{
+    text-decoration: none;
+    color: transparent;
 }
+/* .btn>button:nth-child(2){
+    background-color: #fc8554;
+} */
  
 
 @media (max-width: 768px){
