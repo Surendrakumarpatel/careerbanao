@@ -1,10 +1,9 @@
 import React,{useState, useEffect} from 'react';
 import axios from "axios";
-// import Menu from '../../Counselling/Engineering/ExamData';
-// import Exams from '../../Counselling/Engineering/Exams';
 import Filtering from '../../Application/Engineering/Filtering';
 import ResNavbar from '../../Navbar/ResNavbar';
 import Results from './Results';
+import Footer from '../../Body/Section_6/Footer';
 
 function EngineeringResult() {
      const [eResult, setEResult] = useState([]);
@@ -55,10 +54,7 @@ function EngineeringResult() {
           </div>
         </div>
       </div>
-
-
-
-      {/* <Footer /> */}
+      <Footer/>
     </div>
     
   )

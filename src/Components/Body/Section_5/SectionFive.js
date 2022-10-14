@@ -16,7 +16,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const URL = "http://localhost:3005/videocalls";
+const URL = "https://kalkaprasad.com/careerbanao/index.php/APIBase/homeAPI";
 function SectionFive() {
   const [testimonialData, setTestimonialData] = useState([]);
   const [open, setOpen] = React.useState(false);
@@ -24,6 +24,8 @@ function SectionFive() {
     name: "",
     email: "",
     phone: "",
+    type: "Refer a friend",
+    comment: "null"
   });
   const changeEventHandler = (e) => {
     const name = e.target.name;
@@ -37,9 +39,11 @@ function SectionFive() {
     setOpen(false);
   };
   const submitData = async (e) => {
+
     e.preventDefault();
-    await axios.post(URL, userInfo).then((res) => {
-      alert(res.data);
+    await axios.post(URL, JSON.stringify(userInfo)).then((res) => {
+      console.log(userInfo);
+      console.log(res.data);
     }).catch((err) => {
       console.log(err);
     })
@@ -47,11 +51,13 @@ function SectionFive() {
       name: "",
       email: "",
       phone: "",
-       
-    })
+      type: "video",
+      comment: "harekrishna.."
 
+    })
+    handleClose();
   }
-  
+
   useEffect(() => {
     axios.get("https://kalkaprasad.com/careerbanao/index.php/APIBase/fetchtestimonialsAPI").then((res, req) => {
       setTestimonialData(res.data);
@@ -110,7 +116,8 @@ function SectionFive() {
               <TextField onChange={changeEventHandler} value={userInfo.name} name="name" style={{ marginTop: "0.5rem" }} required type="text" id="standard-basic" label="Name" variant="standard" />
               <TextField onChange={changeEventHandler} value={userInfo.phone} name="phone" style={{ marginTop: "0.5rem" }} required minlength="10" maxlength="10" type="tel" id="standard-basic" label="Phone" variant="standard" />
               <TextField onChange={changeEventHandler} value={userInfo.email} name="email" style={{ marginTop: "0.5rem" }} required type="email" id="standard-basic" label="Email" variant="standard" />
-              <Button onClick={handleClose} type="submit" style={{ marginTop: "2rem", color: "white", background: "#49387f" }}>Submit</Button>
+              <Button  type="submit" style={{ marginTop: "2rem", color: "white", background: "#49387f" }}>Submit</Button>
+              {/* <input type="submit">Send</input> */}
             </form>
           </DialogContentText>
         </DialogContent>

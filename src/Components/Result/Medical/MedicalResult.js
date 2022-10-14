@@ -1,25 +1,26 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import Filtering from '../../Application/Engineering/Filtering';
 import ResNavbar from '../../Navbar/ResNavbar';
 // import Results from './MedicalResults';
 import MedicalResults from './MedicalResults';
+import Footer from '../../Body/Section_6/Footer';
 
 function MedicalResult() {
- const [mResult, setMResult] = useState([]);
-  
-  const gettingCategory =  (categData) =>{
-    getApiData(categData);
- }
+  const [mResult, setMResult] = useState([]);
 
- const getApiData = async (categData) => {
-    await axios.get(`https://kalkaprasad.com/careerbanao/index.php/APIBase/getResultMed?category=${categData}`).then((res, req)=>{
+  const gettingCategory = (categData) => {
+    getApiData(categData);
+  }
+
+  const getApiData = async (categData) => {
+    await axios.get(`https://kalkaprasad.com/careerbanao/index.php/APIBase/getResultMed?category=${categData}`).then((res, req) => {
       setMResult(res.data);
-   });
- }
- useEffect(() => {
-   getApiData("");
- }, []);
+    });
+  }
+  useEffect(() => {
+    getApiData("");
+  }, []);
 
   return (
     <div className='engineering-c'>
@@ -27,11 +28,11 @@ function MedicalResult() {
       <div className='exam-section'>
         <div className='filter-collegeExam'>
 
-          <div className='fil'><Filtering gettingCategory = { gettingCategory } mResult={mResult} setMResult={setMResult} /></div>
+          <div className='fil'><Filtering gettingCategory={gettingCategory} mResult={mResult} setMResult={setMResult} /></div>
           <div className='multiple'>
             {
               mResult.map((item) => {
-                const { college_logo, college_name,web_link, college_category, college_address} = item;
+                const { college_logo, college_name, web_link, college_category, college_address } = item;
                 return (
                   <>
                     <div className='exm'><MedicalResults
@@ -54,12 +55,9 @@ function MedicalResult() {
           </div>
         </div>
       </div>
-
-
-
-      {/* <Footer /> */}
+      <Footer />
     </div>
-    
+
   )
 }
 

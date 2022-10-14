@@ -3,6 +3,7 @@ import axios from "axios";
 import Filtering from "../Engineering/Filtering";
 import ResNavbar from '../../Navbar/ResNavbar';
 import MedicalExams from './MedicalExams';
+import Footer from '../../Body/Section_6/Footer';
 
 
 function MedicalCounselling() {
@@ -57,6 +58,7 @@ function MedicalCounselling() {
                     </div>
                 </div>
             </section>
+            <Footer/>
         </div>
     )
 }

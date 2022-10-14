@@ -15,12 +15,13 @@ import ApplicationApply from './Components/Application/Engineering/ApplicationAp
 import MCounselling from './Components/Counselling/Medical/ECounselling';
 import MedicalApplyHome from './Components/Counselling/Medical/MedicalApplyHome';
 import MApplicationApply from './Components/Application/Medical/MApplicationApply';
-import DashBoard from "./Components/DashBoard/DashBoard";
+
+import {AuthContextProvider} from './Context/AuthContext';
 function App() {
  
   return (
-    <div className="App">
-      {/* <DashBoard/> */}
+    <AuthContextProvider>
+      <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -41,6 +42,8 @@ function App() {
       </BrowserRouter>
        
     </div>
+    </AuthContextProvider>
+    
   );
 }
 

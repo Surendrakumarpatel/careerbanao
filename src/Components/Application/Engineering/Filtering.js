@@ -20,7 +20,7 @@ function Filtering({ gettingCategory }) {
   return (
     <div className='filtering'>
       <div className='found-exams'>
-        <div>Found All Exams</div>
+        <div>Category</div>
         <div className='default-text' onClick={() => { gettingCategory(""); setColor1(false); setColor2(false) }}>Default</div>
       </div>
       <div className='private-government'>

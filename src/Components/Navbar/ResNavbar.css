@@ -1,3 +1,6 @@
+.popup-dialog{
+    z-index: 999;
+}
 /* NAVBAR STYLING STARTS */
 a{
     text-decoration: none;

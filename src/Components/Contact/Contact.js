@@ -26,10 +26,11 @@ function Contact() {
     const url = "https://kalkaprasad.com/careerbanao/index.php/APIBase/homeAPI";
     const submit = async (e) => {
         e.preventDefault();
-        await axios.post(url, user).then((res)=>{ 
-            console.log(user);
+        await axios.post(url, JSON.stringify(user)).then((res)=>{ 
+            alert("Data Submitted successfully!");
             console.log(res.data);
         }).catch((err)=>{
+           alert("Please try after sometime");
            console.log(err);
         })
         setUser({
@@ -80,7 +81,7 @@ function Contact() {
                                 <textarea onChange={changeEventHandler} value={user.comment} name="comment" type="text" placeholder='Message...' required />
                             </div>
                             <div className="button">
-                                <input type="submit" value="Send Now" />
+                                <input type="submit" value="Submit Now" />
                             </div>
                         </form>
                     </div>
