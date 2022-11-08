@@ -5,16 +5,18 @@ import Exams from './Exams';
 import Filtering from './Filtering';
 import "./EngineeringCounselling.css";
 import ResNavbar from '../../Navbar/ResNavbar';
+import {BaseUrl} from "../../baseurl/baseurl";
 
 function EngineeringCounselling() {
   const [items, setItems] = useState([]);
-  
+  const length = items.length;
+  // console.log("array length: "+length);
   const gettingCategory =  (categData) =>{
     getApiData(categData);
   }
  
   const getApiData = async (categData) => {
-    await axios.get(`https://kalkaprasad.com/careerbanao/index.php/APIBase/getApplicationDetailsEng?category=${categData}`).then((res, req)=>{
+    await axios.get(`${BaseUrl}/getApplicationDetailsEng?category=${categData}`).then((res, req)=>{
         setItems(res.data);
     });
   }
@@ -31,10 +33,12 @@ function EngineeringCounselling() {
           <div className='multiple'>
             {
               items.map((item) => {
-                const { college_name, college_logo, apply_link, college_address, Last_date, college_category, latest_news, news_event, Introduction } = item;
+                const {id,college_name, college_logo, apply_link, college_address, Last_date, college_category, latest_news, news_event, Introduction } = item;
+                
                 return (
                   <>
                     <div className='exm'><Exams
+                      id = {id}
                       college_name={college_name}
                       college_logo={college_logo}
                       apply_link={apply_link}

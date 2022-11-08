@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import "./Contact.css";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CallIcon from '@mui/icons-material/Call';
@@ -6,41 +6,66 @@ import MailIcon from '@mui/icons-material/Mail';
 import ResNavbar from '../Navbar/ResNavbar';
 import axios from "axios";
 import Footer from '../Body/Section_6/Footer';
+import { useLocation } from "react-router-dom"
+import { useFormik } from 'formik';
+import { ContactValidation } from '../validation/schema/Contact';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {BaseUrl} from "../baseurl/baseurl";
 
+// getting all input field data
+const initialValues = {
+    name: "",
+    email: "",
+    phone: "",
+    comment: "",
+    type: "contact"
+}
+// url
+
+const url = `${BaseUrl}/homeAPI`
 
 function Contact() {
-    const [user, setUser] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        comment: "",
-        type:"contact"
-
-    })
-
-    const changeEventHandler = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        setUser({ ...user, [name]: value });
-    }
-    const url = "https://kalkaprasad.com/careerbanao/index.php/APIBase/homeAPI";
-    const submit = async (e) => {
-        e.preventDefault();
-        await axios.post(url, JSON.stringify(user)).then((res)=>{ 
-            alert("Data Submitted successfully!");
-            console.log(res.data);
-        }).catch((err)=>{
-           alert("Please try after sometime");
-           console.log(err);
-        })
-        setUser({
-            name: "",
-            email: "",
-            phone: "",
-            comment: "",
-            type:"contact"
-        })
-    }
+    const location = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]);
+    
+    // Using formik for Form validation
+    const Formik = useFormik({
+        initialValues: initialValues,
+        validationSchema: ContactValidation,
+        onSubmit: async (values, action) => {
+            await axios.post(url, JSON.stringify(values)).then((res) => {
+                console.log(res.data);
+                toast.success('Submitted Successfully!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }).catch((err) => {
+                console.log(err);
+                toast.error('Server Error', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            })
+            console.log(values);
+            action.resetForm();
+        }
+    });
+    
     return (
         <>
             <ResNavbar />
@@ -63,31 +88,80 @@ function Contact() {
                             <div className="topic">Email</div>
                             <div className="text-one">careerbanao20@gmail.com</div>
                         </div>
-                    </div> 
+                    </div>
                     <div className="right-side">
                         <div className="topic-text">Send us a message</div>
                         {/* <p>If you have any work from me or any types of quries related to my tutorial, you can send me message from here. It's my pleasure to help you.</p> */}
-                        <form onSubmit={submit}>
+                        <form onSubmit={Formik.handleSubmit}>
                             <div className="input-box">
-                                <input onChange={changeEventHandler} value={user.name} name="name" type="text" placeholder="Name" required />
+                                <input
+                                    autoComplete="off"
+                                    type="text"
+                                    placeholder="Name"
+                                    name="name"
+                                    value={Formik.values.name}
+                                    onChange={Formik.handleChange}
+                                    onBlur={Formik.handleBlur}
+
+                                />
+                                {Formik.errors.name && Formik.touched.name ?
+                                    (<p className="form-errors">{Formik.errors.name}</p>) :
+                                    null
+                                }
+
                             </div>
                             <div className="input-box">
-                                <input onChange={changeEventHandler} value={user.email} name="email" type="email" placeholder="Email" required />
+                                <input
+                                    autoComplete="off"
+                                    type="email"
+                                    placeholder="Email"
+                                    name="email"
+                                    value={Formik.values.email}
+                                    onChange={Formik.handleChange}
+                                    onBlur={Formik.handleBlur}
+                                />
+                                {Formik.errors.email && Formik.touched.email ?
+                                    (<p className="form-errors">{Formik.errors.email}</p>) :
+                                    null
+                                }
+
                             </div>
                             <div className="input-box">
-                                <input onChange={changeEventHandler} value={user.phone} name="phone" type="phone" placeholder="Phone No" required />
+                                <input
+                                    autoComplete="off"
+                                    placeholder="Phone No"
+                                    type="text"
+                                    name="phone"
+                                    value={Formik.values.phone}
+                                    onChange={Formik.handleChange}
+                                    onBlur={Formik.handleBlur}
+                                />
+                                {Formik.errors.phone && Formik.touched.phone ?
+                                    (<p className="form-errors">{Formik.errors.phone}</p>) :
+                                    null
+                                }
+
                             </div>
                             <div className="input-box message-box">
-                                <textarea onChange={changeEventHandler} value={user.comment} name="comment" type="text" placeholder='Message...' required />
+                                <textarea
+                                    autoComplete="off"
+                                    name="comment"
+                                    type="text"
+                                    placeholder='Message...'
+                                    value={Formik.values.comment}
+                                    onChange={Formik.handleChange}
+                                    onBlur={Formik.handleBlur}
+                                />
                             </div>
-                            <div className="button">
+                            <div className='button'>
                                 <input type="submit" value="Submit Now" />
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <ToastContainer />
+            <Footer />
         </>
 
     )

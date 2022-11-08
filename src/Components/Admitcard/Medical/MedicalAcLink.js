@@ -12,7 +12,7 @@ function MedicalAcLink({ExamLogo,ExamName,ExamsLink,CollegeAddress}) {
             </div>
           </div>
           <div className='apply'>
-             <a style={{color:"black"}} href={ExamsLink}><button>Admit card</button></a>
+             <a style={{color:"black"}} href={ExamsLink} target="blank"><button>Admit card</button></a>
           </div>
         </div>
          

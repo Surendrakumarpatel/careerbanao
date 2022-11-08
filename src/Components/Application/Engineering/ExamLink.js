@@ -2,12 +2,13 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import "./ExamLink.css";
 
-function ExamLink({ ExamLogo, ExamName, apply_link, CollegeAddress, Last_date, latest_news,news_event,Intro}) {
+function ExamLink({ id, ExamLogo, ExamName, apply_link, CollegeAddress, Last_date, latest_news, news_event, Intro }) {
   const navigate = useNavigate();
+
   const switchToApplyHomePage = () => {
-    navigate("/applicationapply",{state:{id:1,intro:Intro,latest_news:latest_news,news_event:news_event,apply_link:apply_link}});
+    navigate("/applicationapply", { state: { id: 1, intro: Intro, latest_news: latest_news, news_event: news_event, apply_link: apply_link } });
   }
-  
+
   return (
     <div className='exam-link'>
       <div className='link-and-text'>
@@ -15,7 +16,7 @@ function ExamLink({ ExamLogo, ExamName, apply_link, CollegeAddress, Last_date, l
           <div className='link'>
             <img src={ExamLogo} />
             <div className='exams-name'>
-              <p>{ExamName}</p>
+              <p>Data Not Found!</p>
               <span>{CollegeAddress}</span>
             </div>
           </div>
@@ -26,7 +27,7 @@ function ExamLink({ ExamLogo, ExamName, apply_link, CollegeAddress, Last_date, l
         <div className='apply'>
           <button onClick={switchToApplyHomePage}>Apply Now</button>
         </div>
-      </div>
+      </div> 
 
     </div>
   )

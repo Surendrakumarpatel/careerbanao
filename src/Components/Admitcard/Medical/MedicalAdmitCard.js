@@ -4,6 +4,7 @@ import Filtering from '../../Application/Engineering/Filtering';
 import ResNavbar from '../../Navbar/ResNavbar';
 import Footer from '../../Body/Section_6/Footer';
 import MedicalAc from './MedicalAc';
+import {BaseUrl} from "../../baseurl/baseurl";
 
 function MedicalAdmitCard() {
  
@@ -15,7 +16,7 @@ function MedicalAdmitCard() {
  }
 
  const getApiData = async (categData) => {
-    await axios.get(`https://kalkaprasad.com/careerbanao/index.php/APIBase/getAdmitMed?category=${categData}`).then((res, req)=>{
+    await axios.get(`${BaseUrl}/getAdmitMed?category=${categData}`).then((res, req)=>{
       setMAdmitCard(res.data);
    });
  }

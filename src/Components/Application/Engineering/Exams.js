@@ -3,7 +3,8 @@ import "./Exams.css";
 // import EastIcon from '@mui/icons-material/East';
 import ExamLink from './ExamLink';
 
-function Exams({college_name,college_logo,apply_link,college_address,Last_date,college_category,latest_news,news_event,Intro}) {
+function Exams({id,college_name,college_logo,apply_link,college_address,Last_date,college_category,latest_news,news_event,Intro}) {
+   
   return (
 
     <div className='exams'>
@@ -11,6 +12,7 @@ function Exams({college_name,college_logo,apply_link,college_address,Last_date,c
         {/* <img src={CollegeImg}/> */}
       </div>
      <ExamLink 
+     id = {id}
      ExamLogo={college_logo}
      ExamName={college_name}
      apply_link = {apply_link}

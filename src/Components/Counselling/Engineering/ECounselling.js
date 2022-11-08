@@ -4,11 +4,12 @@ import "./ECounselling.css";
 import ResNavbar from '../../Navbar/ResNavbar';
 import Footer from '../../Body/Section_6/Footer';
 import ECounsellingLink from './ECounsellingLink';
+import { BaseUrl } from '../../baseurl/baseurl';
  
 function ECounselling() {
    const [eCounsellingData, setECounsellingData] = useState([]);
    useEffect(() => {
-    axios.get("https://kalkaprasad.com/careerbanao/index.php/APIBase/getCounslingDetails").then((res, req) => {
+    axios.get(`${BaseUrl}/getCounslingDetails`).then((res, req) => {
      console.log(res.data);
      setECounsellingData(res.data); 
       

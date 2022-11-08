@@ -4,8 +4,14 @@ import Footer from '../../Body/Section_6/Footer';
 import Filtering from '../../Application/Engineering/Filtering';
 import ResNavbar from '../../Navbar/ResNavbar';
 import Ac from './Ac';
+import {useLocation} from "react-router-dom"
+import {BaseUrl} from "../../baseurl/baseurl";
 
 function EngineeringAdmitCard() {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
   
   const [eAdmitCard, setEAdmitCard] = useState([]);
 
@@ -14,7 +20,7 @@ function EngineeringAdmitCard() {
  }
 
  const getApiData = async (categData) => {
-    await axios.get(`https://kalkaprasad.com/careerbanao/index.php/APIBase/getAdmitEng?category=${categData}`).then((res, req)=>{
+    await axios.get(`${BaseUrl}/getAdmitEng?category=${categData}`).then((res, req)=>{
       setEAdmitCard(res.data);
    });
  }

@@ -3,13 +3,14 @@ import "./Header.css";
 import Button from '@mui/material/Button'
 import CounselingImage from '../utils/cimg.svg'
 import axios from 'axios';
+import { BaseUrl } from '../baseurl/baseurl';
 
 function Header() {
   const [whatsappLink, setWhatsappLink] = useState("");
 
 
   useEffect(() => {
-    axios.get("https://kalkaprasad.com/careerbanao/index.php/APIBase/getWhatsAppURL").then((res, req) => {
+    axios.get(`${BaseUrl}/getWhatsAppURL`).then((res, req) => {
       const wtlink = res.data[0].whatsApp_link;
       console.log(wtlink);
       setWhatsappLink(wtlink);

@@ -1,5 +1,5 @@
 import './App.css';
-import React,{useState} from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import EngineeringCounselling from './Components/Application/Engineering/EngineeringCounselling';
 import MedicalCounselling from './Components/Application/Medical/MedicalCounselling';
@@ -15,35 +15,37 @@ import ApplicationApply from './Components/Application/Engineering/ApplicationAp
 import MCounselling from './Components/Counselling/Medical/ECounselling';
 import MedicalApplyHome from './Components/Counselling/Medical/MedicalApplyHome';
 import MApplicationApply from './Components/Application/Medical/MApplicationApply';
-
-import {AuthContextProvider} from './Context/AuthContext';
-function App() {
+import { AuthContextProvider } from './Context/AuthContext';
  
+function App() {
+  
   return (
     <AuthContextProvider>
       <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/engineering" element={<EngineeringCounselling />} />
-          <Route path="/medical" element={<MedicalCounselling />} />
-          <Route path="/engineeringresult" element={<EngineeringResult/>} />
-          <Route path="/medicalresult" element={<MedicalResult/>} />
-          <Route path="/engineeringadmitcard" element={<EngineeringAdmitCard/>} />
-          <Route path="/medicaladmitcard" element={<MedicalAdmitCard/>} />
-          <Route path="/homeAPI" element={<Contact/>} />
-          <Route path="/ecounselling" element={<ECounselling/>} />
-          <Route path="/mcounselling" element={<MCounselling/>} />
-          <Route path="/applyhome" element={<ApplyHome/>}/>
-          <Route path="/medicalapplyhome" element={<MedicalApplyHome/>} />
-          <Route path="/applicationapply" element={<ApplicationApply />} />
-          <Route path="/mapplicationapply" element={<MApplicationApply/>} />
-        </Routes>
-      </BrowserRouter>
-       
-    </div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/engineering" element={<EngineeringCounselling />} />
+            <Route path="/medical" element={<MedicalCounselling />} />
+            <Route path="/engineeringresult" element={<EngineeringResult />} />
+            <Route path="/medicalresult" element={<MedicalResult />} />
+            <Route path="/engineeringadmitcard" element={<EngineeringAdmitCard />} />
+            <Route path="/medicaladmitcard" element={<MedicalAdmitCard />} />
+            <Route path="/homeAPI" element={<Contact />} />
+            
+            <Route path="/ecounselling" element={<ECounselling/>} />
+            <Route path="/mcounselling" element={<MCounselling />} />
+
+            <Route path="/applyhome" element={<ApplyHome />} />
+            <Route path="/medicalapplyhome" element={<MedicalApplyHome />} />
+            <Route path="/applicationapply" element={<ApplicationApply />} />
+            <Route path="/mapplicationapply" element={<MApplicationApply />} />
+          </Routes>
+        </BrowserRouter>
+
+      </div>
     </AuthContextProvider>
-    
+
   );
 }
 

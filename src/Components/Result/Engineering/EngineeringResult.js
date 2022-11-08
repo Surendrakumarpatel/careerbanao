@@ -4,6 +4,7 @@ import Filtering from '../../Application/Engineering/Filtering';
 import ResNavbar from '../../Navbar/ResNavbar';
 import Results from './Results';
 import Footer from '../../Body/Section_6/Footer';
+import { BaseUrl } from '../../baseurl/baseurl';
 
 function EngineeringResult() {
      const [eResult, setEResult] = useState([]);
@@ -13,7 +14,7 @@ function EngineeringResult() {
  }
 
  const getApiData = async (categData) => {
-    await axios.get(`https://kalkaprasad.com/careerbanao/index.php/APIBase/getResultEng?category=${categData}`).then((res, req)=>{
+    await axios.get(`${BaseUrl}/getResultEng?category=${categData}`).then((res, req)=>{
       setEResult(res.data);
    });
  }

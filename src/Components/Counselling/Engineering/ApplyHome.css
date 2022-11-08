@@ -40,7 +40,7 @@ a{
  
 .news-and-events>ul>li{
   list-style-type: disc;
-  margin: 1rem;
+  margin-left: 1.5rem !important;
   
 }
 .news-and-events>ul>li:hover{
@@ -48,11 +48,12 @@ a{
   cursor: pointer;
 }
 .news-and-events>ul{
-  background-color: whitesmoke;
-  padding: 30px;
-  border-radius: 5px;
-  font-family: 'Open Sans', sans-serif;
-  color: gray;
+  background-color: whitesmoke !important;
+  padding: 6px !important;
+  border-radius: 5px !important;
+  font-family: 'Open Sans', sans-serif !important;
+  color: gray !important;
+  
 }
 .letestnews{
     display: flex;

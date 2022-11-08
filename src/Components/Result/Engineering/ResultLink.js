@@ -12,7 +12,7 @@ function ResultLink({ExamLogo,ExamName,web_link,CollegeAddress}) {
             </div>
           </div>
           <div className='apply'>
-             <a href = {web_link} style={{color:"black"}} ><button>Result</button></a>
+             <a href = {web_link} style={{color:"black"}} target="blank"><button>Result</button></a>
           </div>
         </div>
     </div>

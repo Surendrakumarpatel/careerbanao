@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import "./ResNavbar.css";
 import { motion } from "framer-motion";
@@ -9,8 +10,10 @@ import DialogTitle from '@mui/material/DialogTitle';
 import GoogleButton from "react-google-button";
 import { UserAuth } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { Avatar } from '@mui/material';
+import { BaseUrl } from '../baseurl/baseurl';
 
- 
+
 const container = {
     hidden: { opacity: 1, scale: 0 },
     visible: {
@@ -34,18 +37,18 @@ const item = {
 
 function ResNavbar() {
     const navigate = useNavigate();
-    const {user, logOut} = UserAuth();
-    const [open, setOpen] = React.useState(false);
     const { googleSignIn } = UserAuth();
+    const { user, logOut } = UserAuth();
+    const [open, setOpen] = useState(false);
 
-     
 
     const handleGoogleSignIn = async () => {
-        try {
-            await googleSignIn();
-        } catch (error) {
-            console.log(error);
-        }
+        await googleSignIn();
+        handleClose();
+    }
+    const logout = async () => {
+        await logOut();
+        navigate("/");
     }
 
     const handleClickOpen = () => {
@@ -57,7 +60,6 @@ function ResNavbar() {
 
     const [visit, setVisit] = useState(false);
     const visited = () => {
-
         setVisit(true);
     }
     const [navbar, setNavbar] = useState(false);
@@ -70,7 +72,7 @@ function ResNavbar() {
 
     }
     window.addEventListener("scroll", changeBackgroundColor);
-
+ 
     return (
         <>
             <div>
@@ -124,23 +126,43 @@ function ResNavbar() {
                             >
                                 <a className="visited-4">Counselling</a>
                                 <ul className="dropdown" >
-                                    <li onClick={handleClickOpen}><a style={{ color: "white", cursor: "pointer" }}>Engineering</a></li>
-                                    <li onClick={handleClickOpen}><a style={{ color: "white", cursor: "pointer" }}>Medical</a></li>
+                                    {
+                                        user ? (
+                                            <>
+                                                <li onClick={handleClickOpen}><Link to="/ecounselling" style={{ color: "white", cursor: "pointer" }}>Engineering</Link>
+                                                </li>
+                                                <li onClick={handleClickOpen}><Link to="/mcounselling" style={{ color: "white", cursor: "pointer" }}>Medical</Link>
+                                                </li>
+                                            </>
+                                        ) :
+                                            <>
+                                                <li onClick={handleClickOpen}><a style={{ color: "white", cursor: "pointer" }}>Engineering</a></li>
+                                                <li onClick={handleClickOpen}><a style={{ color: "white", cursor: "pointer" }}>Medical</a></li>
+                                            </>
+                                    }
                                 </ul>
                             </motion.li>
                             <motion.li
                                 variants={item}
                             ><Link to="/homeAPI" className="visited-5">Contact</Link></motion.li>
                             <div className='login_signup'>
-                                <button>Login</button>
+                                {
+                                    user ? (<>
+                                        <Avatar className="user-img" alt="user" src={user.photoURL} />
+                                        <button style={{ marginLeft: "1rem" }} onClick={logout}>Logout</button>
+                                    </>
+                                    ) :
+                                        (<button onClick={handleClickOpen}>Login</button>)
+                                }
                             </div>
+
                         </motion.div>
                     </ul>
                 </nav>
 
 
             </div>
-            {/* Dialog */}
+            {/* Login with google Dialog */}
             <div className="popup-dialog">
                 <Dialog
                     open={open}
@@ -153,10 +175,10 @@ function ResNavbar() {
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                            <GoogleButton onClick = {handleGoogleSignIn}  style={{ margin: "auto" }} />
+                            <GoogleButton onClick={handleGoogleSignIn} style={{ margin: "auto" }} />
                         </DialogContentText>
                     </DialogContent>
-                    <p style={{ margin: "auto", paddingBottom: "10px", color: "gray" }}>By creating this account, you agree to our Privacy Policy & Cookie Policy.</p>
+                    <p className="instruction" style={{ margin: "auto", paddingBottom: "10px", color: "gray" }}>By creating this account, you agree to our Privacy Policy & Cookie Policy.</p>
                 </Dialog>
             </div>
         </>

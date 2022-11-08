@@ -11,12 +11,27 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { Button, TextField } from '@mui/material';
 import Contact from "../../utils/contact.png";
+import { useFormik } from 'formik';
+import { VideoCallValidation } from '../../validation/schema/Contact';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { BaseUrl } from '../../baseurl/baseurl';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const URL = "https://kalkaprasad.com/careerbanao/index.php/APIBase/homeAPI";
+const URL = `${BaseUrl}/homeAPI`;
+
+// getting all input field data
+const initialValues = {
+  name: "",
+  email: "",
+  phone: "",
+  type: "Refer a Friend",
+  comment: "null",
+}
+
 function SectionFive() {
   const [testimonialData, setTestimonialData] = useState([]);
   const [open, setOpen] = React.useState(false);
@@ -27,39 +42,46 @@ function SectionFive() {
     type: "Refer a friend",
     comment: "null"
   });
-  const changeEventHandler = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setUserInfo({ ...userInfo, [name]: value });
-  }
+
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
-  const submitData = async (e) => {
 
-    e.preventDefault();
-    await axios.post(URL, JSON.stringify(userInfo)).then((res) => {
-      console.log(userInfo);
-      console.log(res.data);
-    }).catch((err) => {
-      console.log(err);
-    })
-    setUserInfo({
-      name: "",
-      email: "",
-      phone: "",
-      type: "video",
-      comment: "harekrishna.."
 
-    })
-    handleClose();
-  }
+
+  // Form validation formik and Yup
+  const Formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: VideoCallValidation,
+    onSubmit: async (values, action) => {
+      setOpen(false);
+      await axios.post(URL, JSON.stringify(values)).then((res) => {
+        toast.success('Submitted Successfully!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+      });
+            console.log(res.data);
+          }).catch((err) => {
+            console.log(err);
+          })
+      console.log(values);
+      action.resetForm();
+      handleClose();
+    }
+  });
 
   useEffect(() => {
-    axios.get("https://kalkaprasad.com/careerbanao/index.php/APIBase/fetchtestimonialsAPI").then((res, req) => {
+    axios.get(`${BaseUrl}/fetchtestimonialsAPI`).then((res, req) => {
       setTestimonialData(res.data);
     }).catch((err) => {
       console.log(err);
@@ -112,17 +134,46 @@ function SectionFive() {
             <div className='cu-img'>
               <img src={Contact} alt="whatsapp"></img>
             </div>
-            <form onSubmit={submitData} className='user-information' >
-              <TextField onChange={changeEventHandler} value={userInfo.name} name="name" style={{ marginTop: "0.5rem" }} required type="text" id="standard-basic" label="Name" variant="standard" />
-              <TextField onChange={changeEventHandler} value={userInfo.phone} name="phone" style={{ marginTop: "0.5rem" }} required minlength="10" maxlength="10" type="tel" id="standard-basic" label="Phone" variant="standard" />
-              <TextField onChange={changeEventHandler} value={userInfo.email} name="email" style={{ marginTop: "0.5rem" }} required type="email" id="standard-basic" label="Email" variant="standard" />
-              <Button  type="submit" style={{ marginTop: "2rem", color: "white", background: "#49387f" }}>Submit</Button>
-              {/* <input type="submit">Send</input> */}
+            <form onSubmit={Formik.handleSubmit} className='user-information' >
+            <TextField
+                type="text"
+                name="name"
+                value={Formik.values.name}
+                onChange={Formik.handleChange}
+                id="standard-basic"
+                label="Name"
+                variant="standard" 
+                style={{ marginTop: "0.5rem" }}
+                />
+                <p className='form-error'>{Formik.errors.name}</p>
+              <TextField
+                type="number"
+                name="phone"
+                value={Formik.values.phone}
+                onChange={Formik.handleChange}
+                style={{ marginTop: "0.5rem" }}
+                placeholder="Phone No"
+                id="standard-basic"
+                label="Phone"
+                variant="standard" />
+                <p className='form-error'>{Formik.errors.phone}</p>
+              <TextField
+                type="email"
+                name="email"
+                value={Formik.values.email}
+                onChange={Formik.handleChange}
+                style={{ marginTop: "0.5rem" }}
+                id="standard-basic"
+                label="Email"
+                variant="standard" />
+                <p className='form-error'>{Formik.errors.email}</p>
+                <Button  type="submit" style={{ marginTop: "2rem", color: "white", background: "#49387f" }}>Submit</Button>
             </form>
           </DialogContentText>
         </DialogContent>
 
       </Dialog>
+      <ToastContainer/>
     </div>
   )
 }

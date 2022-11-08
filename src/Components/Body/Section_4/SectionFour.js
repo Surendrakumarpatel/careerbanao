@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import './SectionFour.css';
 // import { useNavigate } from 'react-router-dom';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import VoiceChatIcon from '@mui/icons-material/VoiceChat';
+// import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+// import VoiceChatIcon from '@mui/icons-material/VoiceChat';
 import Whatsapp from "../../utils/whatsapp.png";
 import VideoCalls from "../../utils/videocalls.png";
 import FTF from "../../utils/facetoface.png";
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
+// import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -15,33 +15,33 @@ import Slide from '@mui/material/Slide';
 import { Button, TextField } from '@mui/material';
 import Contact from "../../utils/contact.png";
 import axios from 'axios';
+import { useFormik } from 'formik';
+import { VideoCallValidation } from '../../validation/schema/Contact';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {BaseUrl} from "../../baseurl/baseurl";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+// getting all input field data
+const initialValues = {
+  name: "",
+  email: "",
+  phone: "",
+  type: "",
+  comment: "null",
+}
+const URL = `${BaseUrl}/homeAPI`; // testing purpuse
+// const URL = "https://kalkaprasad.com/careerbanao/index.php/APIBase/homeAPI";
+
 function SectionFour() {
-  // const URL = "https://kalkaprasad.com/careerbanao/index.php/APIBase/homeAPI";
-  const URL = "https://kalkaprasad.com/careerbanao/index.php/APIBase/homeAPI"; // testing purpuse
-  const [userInfo, setUserInfo] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    type: "",
-    comment: "null",
-
-  });
-  const changeEventHandler = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setUserInfo({ ...userInfo, [name]: value });
-  }
-
   const [whatsappLink, setWhatsappLink] = useState("");
   const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
-    axios.get("https://kalkaprasad.com/careerbanao/index.php/APIBase/getWhatsAppURL").then((res, req) => {
+    axios.get(`${BaseUrl}/getWhatsAppURL`).then((res, req) => {
       const wtlink = res.data[0].whatsApp_link;
       setWhatsappLink(wtlink);
     }).catch((err) => {
@@ -51,32 +51,38 @@ function SectionFour() {
 
   const handleClickOpen = (type) => {
     setOpen(true);
-    setUserInfo({
-      type:type,
-    })
+    initialValues.type=type
   };
   const handleClose = () => {
     setOpen(false);
   };
 
-  const submitData = async (e) => {
-    e.preventDefault();
-    await axios.post(URL, JSON.stringify(userInfo)).then((res) => {
-      console.log(userInfo);
-      console.log(res.data);
-    }).catch((err) => {
-      console.log(err);
-    })
-    setUserInfo({
-      name: "",
-      email: "",
-      phone: "",
-      type: "video",
-      comment: "null"
-    })
-    handleClose();
-  }
-
+  // Form validation formik and Yup
+  const Formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: VideoCallValidation,
+    onSubmit: async (values, action) => {
+      setOpen(false);
+      await axios.post(URL, JSON.stringify(values)).then((res) => {
+        toast.success('Submitted Successfully!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+      });
+            console.log(res.data);
+          }).catch((err) => {
+            console.log(err);
+          })
+      console.log(values);
+      action.resetForm();
+    }
+  });
+ 
   return (
     <div className='video-calls'>
       <div className='center'>
@@ -89,7 +95,7 @@ function SectionFour() {
             </div>
           </div>
         </a>
-        <div className='voice-calls' onClick={()=>handleClickOpen("Video") }>
+        <div className='voice-calls' onClick={() => handleClickOpen("Video")}>
           {/* <VoiceChatIcon style={{fontSize:"2.5rem" , color:"green"}} /> */}
           <img src={VideoCalls} alt="whatsapp" />
           <div>
@@ -97,12 +103,12 @@ function SectionFour() {
             <p className='para'>Speak to our experts or get on a call with them. Get personalized attention right when you need it.</p>
           </div>
         </div>
-        <div className='ftf' onClick={()=>handleClickOpen("face to face") }>
+        <div className='ftf' onClick={() => handleClickOpen("face to face")}>
           {/* <WhatsAppIcon style={{fontSize:"2.5rem", color:"green"}} /> */}
           <img src={FTF} alt="whatsapp" />
           <div>
             <p className='headings'>Face to Face Sessions</p>
-            <p className='para'>Connect 1-on-1 in-person with an expert of your choice.</p>
+            <p className='para'>Connect 1-on-1 in-person with an expert of your choice.To have a positive or meaningful connection with us.</p>
           </div>
         </div>
       </div>
@@ -119,16 +125,46 @@ function SectionFour() {
             <div className='cu-img'>
               <img src={Contact} alt="whatsapp"></img>
             </div>
-            <form onSubmit={submitData} className='user-information' >
-              <TextField onChange={changeEventHandler} value={userInfo.name} name="name" style={{ marginTop: "0.5rem" }} required type="text" id="standard-basic" label="Name" variant="standard" />
-              <TextField onChange={changeEventHandler} value={userInfo.phone} name="phone" style={{ marginTop: "0.5rem" }} required type="tel" minlength="10" maxlength="10" id="standard-basic" label="Phone" variant="standard" />
-              <TextField onChange={changeEventHandler} value={userInfo.email} name="email" style={{ marginTop: "0.5rem" }} required type="email" id="standard-basic" label="Email" variant="standard" />
+            <form onSubmit={Formik.handleSubmit} className='user-information' >
+              <TextField
+                type="text"
+                name="name"
+                value={Formik.values.name}
+                onChange={Formik.handleChange}
+                id="standard-basic"
+                label="Name"
+                variant="standard" 
+                style={{ marginTop: "0.5rem" }}
+                />
+                <p className='form-error'>{Formik.errors.name}</p>
+              <TextField
+                type="number"
+                name="phone"
+                value={Formik.values.phone}
+                onChange={Formik.handleChange}
+                style={{ marginTop: "0.5rem" }}
+                placeholder="Phone No"
+                id="standard-basic"
+                label="Phone"
+                variant="standard" />
+                <p className='form-error'>{Formik.errors.phone}</p>
+              <TextField
+                type="email"
+                name="email"
+                value={Formik.values.email}
+                onChange={Formik.handleChange}
+                style={{ marginTop: "0.5rem" }}
+                id="standard-basic"
+                label="Email"
+                variant="standard" />
+                <p className='form-error'>{Formik.errors.email}</p>
               <Button type="submit" style={{ marginTop: "2rem", color: "white", background: "#49387f" }}>Submit</Button>
             </form>
           </DialogContentText>
         </DialogContent>
 
       </Dialog>
+      <ToastContainer/>
     </div>
   )
 }

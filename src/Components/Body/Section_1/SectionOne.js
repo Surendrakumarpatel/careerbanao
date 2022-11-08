@@ -1,8 +1,7 @@
 import React from 'react'
 import './SectionOne.css';
 import Button from '@mui/material/Button';
-import CI from '../../utils/cimg.svg';
-
+ 
 function SectionOne() {
     return (
         <div className='sectionOne'>

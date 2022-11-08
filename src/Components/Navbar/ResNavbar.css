@@ -23,6 +23,7 @@ li{
     background-color:white;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
+ 
    .nav-links a {
        color:#3f2952;
    }
@@ -84,7 +85,9 @@ li{
    .services:hover .dropdown {
     display: block;
    }
-    
+  .login_signup{
+    display: flex;
+  }  
 .login_signup>button{
     border: 2px solid #3f2952;
     color: #3f2952;
@@ -158,4 +161,20 @@ input[type=checkbox]{
    .dropdown li:hover {
     background-color: #4c9e9e;
    }
+   }
+
+   /* responsive */
+
+   @media (max-width:768px) {
+      .instruction{
+        padding: 0rem 1rem 1rem 1rem ;
+        
+      }
+      .user-img{
+        display: none !important;
+      }
+      .login_signup > button{
+        margin-top: 1rem !important;
+        margin-left: 0.65rem !important;
+      }
    }

@@ -4,6 +4,7 @@ import Filtering from "../Engineering/Filtering";
 import ResNavbar from '../../Navbar/ResNavbar';
 import MedicalExams from './MedicalExams';
 import Footer from '../../Body/Section_6/Footer';
+import {BaseUrl} from "../../baseurl/baseurl";
 
 
 function MedicalCounselling() {
@@ -14,7 +15,7 @@ function MedicalCounselling() {
   }
 
   const getApiData = async (categData) => {
-     await axios.get(`https://kalkaprasad.com/careerbanao/index.php/APIBase/getApplicationDetailsMed?category=${categData}`).then((res, req)=>{
+     await axios.get(`${BaseUrl}/getApplicationDetailsMed?category=${categData}`).then((res, req)=>{
         setMedicalData(res.data);
     });
   }

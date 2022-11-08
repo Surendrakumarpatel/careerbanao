@@ -1,4 +1,8 @@
-
+.form-error{
+    color: rgb(177, 16, 16);
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+}
 .center{
     width: 100%;
     display: flex;

@@ -6,11 +6,12 @@ import SwipeRightIcon from '@mui/icons-material/SwipeRight';
 import Footer from '../../Body/Section_6/Footer';
 import { Link } from 'react-router-dom';
 import MCounsellingLink from './MCounsellingLink';
+import { BaseUrl } from '../../baseurl/baseurl';
 
 function MCounselling() {
     const [mCounsellingData, setMCounsellingData] = useState([]);
     useEffect(() => {
-        axios.get("https://kalkaprasad.com/careerbanao/index.php/APIBase/getCounslingDetailsMed").then((res, req) => {
+        axios.get(`${BaseUrl}/getCounslingDetailsMed`).then((res, req) => {
             console.log(res.data);
             setMCounsellingData(res.data);
 

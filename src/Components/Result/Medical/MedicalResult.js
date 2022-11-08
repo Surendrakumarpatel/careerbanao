@@ -5,6 +5,7 @@ import ResNavbar from '../../Navbar/ResNavbar';
 // import Results from './MedicalResults';
 import MedicalResults from './MedicalResults';
 import Footer from '../../Body/Section_6/Footer';
+import { BaseUrl } from '../../baseurl/baseurl';
 
 function MedicalResult() {
   const [mResult, setMResult] = useState([]);
@@ -14,7 +15,7 @@ function MedicalResult() {
   }
 
   const getApiData = async (categData) => {
-    await axios.get(`https://kalkaprasad.com/careerbanao/index.php/APIBase/getResultMed?category=${categData}`).then((res, req) => {
+    await axios.get(`${BaseUrl}/getResultMed?category=${categData}`).then((res, req) => {
       setMResult(res.data);
     });
   }
