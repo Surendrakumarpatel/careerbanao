@@ -6,15 +6,19 @@ import Filtering from './Filtering';
 import "./EngineeringCounselling.css";
 import ResNavbar from '../../Navbar/ResNavbar';
 import {BaseUrl} from "../../baseurl/baseurl";
+import { useLocation } from "react-router-dom"
 
 function EngineeringCounselling() {
+  const location = useLocation();
+  useEffect(() => {
+      window.scrollTo(0, 0);
+  }, [location]);
   const [items, setItems] = useState([]);
   const length = items.length;
-  // console.log("array length: "+length);
+  console.log("array length: "+ length);
   const gettingCategory =  (categData) =>{
     getApiData(categData);
   }
- 
   const getApiData = async (categData) => {
     await axios.get(`${BaseUrl}/getApplicationDetailsEng?category=${categData}`).then((res, req)=>{
         setItems(res.data);
@@ -32,7 +36,8 @@ function EngineeringCounselling() {
           <div className='fil'><Filtering gettingCategory = {gettingCategory} items={items} setItems={setItems}/></div>
           <div className='multiple'>
             {
-              items.map((item) => {
+              items.length === 0 ? (<p className='data-not-found'>Data Not Found!</p>) :
+              (items.map((item) => {
                 const {id,college_name, college_logo, apply_link, college_address, Last_date, college_category, latest_news, news_event, Introduction } = item;
                 
                 return (
@@ -49,9 +54,11 @@ function EngineeringCounselling() {
                       news_event={news_event}
                       Intro={Introduction}
                     /></div>
+                    
                   </>
                 )
-              })
+              }))
+             
             }
           </div>
         </div>

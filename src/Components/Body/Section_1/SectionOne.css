@@ -60,6 +60,7 @@
     font-size:16px;
     width: 35%;
     background-color: #fc8554;
+    visibility: hidden;
 }
 .sec_1_btn>button:hover{
     background-color: #fc8554;
@@ -73,7 +74,7 @@
 @media (max-width: 768px){
      .sec_1{
         flex-direction:column;
-        padding: 1rem;
+        padding: 1rem; 
     }
     .logo_1>img{
         height: 150px;

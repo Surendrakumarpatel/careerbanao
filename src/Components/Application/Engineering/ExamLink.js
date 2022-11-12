@@ -16,7 +16,7 @@ function ExamLink({ id, ExamLogo, ExamName, apply_link, CollegeAddress, Last_dat
           <div className='link'>
             <img src={ExamLogo} />
             <div className='exams-name'>
-              <p>Data Not Found!</p>
+              <p>{ExamName}</p>
               <span>{CollegeAddress}</span>
             </div>
           </div>

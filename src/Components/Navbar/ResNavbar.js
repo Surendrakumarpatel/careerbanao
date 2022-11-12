@@ -78,7 +78,7 @@ function ResNavbar() {
             <div>
                 <nav className={navbar ? "navbar active" : "navbar"}>
                     {/* <!-- LOGO --> */}
-                    <div className="logo">CareerBanao</div>
+                    <Link to="/"><div className="logo">CareerBanao</div></Link>
                     {/* <!-- NAVIGATION MENU --> */}
                     <ul className="nav-links">
                         {/* <!-- USING CHECKBOX HACK --> */}
@@ -98,8 +98,8 @@ function ResNavbar() {
                             >
                                 <a className={visit ? "visited-1" : "random"}>Application</a>
                                 <ul className="dropdown" >
-                                    <li ><Link onClick={visited} style={{ color: "white" }} to="/engineering">Engineering</Link></li>
-                                    <li onClick={visited}><Link style={{ color: "white" }} to="/medical">Medical</Link></li>
+                                    <Link onClick={visited} style={{ color: "white" }} to="/engineering"><li >Engineering</li></Link>
+                                    <Link style={{ color: "white" }} to="/medical"><li onClick={visited}>Medical</li></Link>
                                 </ul>
                             </motion.li>
                             <motion.li className="services"
@@ -107,8 +107,8 @@ function ResNavbar() {
                             >
                                 <a className="visited-2">Admit Card</a>
                                 <ul className="dropdown">
-                                    <li><Link style={{ color: "white" }} to="/engineeringadmitcard">Engineering</Link></li>
-                                    <li><Link style={{ color: "white" }} to="/medicaladmitcard">Medical</Link></li>
+                                    <Link style={{ color: "white" }} to="/engineeringadmitcard"><li>Engineering</li></Link>
+                                    <Link style={{ color: "white" }} to="/medicaladmitcard"><li>Medical</li></Link>
                                 </ul>
                             </motion.li>
                             <motion.li className="services"
@@ -117,8 +117,8 @@ function ResNavbar() {
                                 <a className="visited-3">Result</a>
                                 {/* <!-- DROPDOWN MENU --> */}
                                 <ul className="dropdown">
-                                    <li><Link style={{ color: "white" }} to="/engineeringresult">Engineering</Link></li>
-                                    <li><Link style={{ color: "white" }} to="/medicalresult">Medical</Link></li>
+                                    <Link style={{ color: "white" }} to="/engineeringresult"><li>Engineering</li></Link>
+                                    <Link style={{ color: "white" }} to="/medicalresult"><li>Medical</li></Link>
                                 </ul>
                             </motion.li>
                             <motion.li className="services"
@@ -129,10 +129,10 @@ function ResNavbar() {
                                     {
                                         user ? (
                                             <>
-                                                <li onClick={handleClickOpen}><Link to="/ecounselling" style={{ color: "white", cursor: "pointer" }}>Engineering</Link>
-                                                </li>
-                                                <li onClick={handleClickOpen}><Link to="/mcounselling" style={{ color: "white", cursor: "pointer" }}>Medical</Link>
-                                                </li>
+                                                <Link to="/ecounselling" style={{ color: "white", cursor: "pointer" }}><li >Engineering</li></Link>
+                                                
+                                                <Link to="/mcounselling" style={{ color: "white", cursor: "pointer" }}><li >Medical</li></Link>
+                                                
                                             </>
                                         ) :
                                             <>

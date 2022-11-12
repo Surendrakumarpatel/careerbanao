@@ -35,14 +35,6 @@ const initialValues = {
 function SectionFive() {
   const [testimonialData, setTestimonialData] = useState([]);
   const [open, setOpen] = React.useState(false);
-  const [userInfo, setUserInfo] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    type: "Refer a friend",
-    comment: "null"
-  });
-
   
   const handleClickOpen = () => {
     setOpen(true);
@@ -62,7 +54,7 @@ function SectionFive() {
       await axios.post(URL, JSON.stringify(values)).then((res) => {
         toast.success('Submitted Successfully!', {
           position: "top-center",
-          autoClose: 5000,
+          autoClose: 1000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -88,6 +80,8 @@ function SectionFive() {
     })
   }, []);
 
+  console.log("testimoial:" + testimonialData);
+
   return (
     <div className='section-five'>
       <div className='testimonials'>
@@ -101,7 +95,8 @@ function SectionFive() {
         autoPlay={true}
         interval={5000}
       >
-        {
+        { 
+        testimonialData === 204 ? <p className = "data-not-found">Data Not Found!</p> :
           testimonialData.map((items) => {
             const { name, college_name, feedback, student_image } = items;
             return (
@@ -128,7 +123,7 @@ function SectionFive() {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle style={{ textAlign: "center", fontFamily: "Poppins", fontWeight: "600" }}>{"User's Information"}</DialogTitle>
+        <DialogTitle style={{ textAlign: "center", fontFamily: "Poppins", fontWeight: "600" }}>{"Refer Friend"}</DialogTitle>
         <DialogContent>
           <DialogContentText className="contact-us-img" id="alert-dialog-slide-description">
             <div className='cu-img'>

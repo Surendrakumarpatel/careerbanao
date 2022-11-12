@@ -39,7 +39,7 @@ function EngineeringAdmitCard() {
 
           <div className='fil'><Filtering gettingCategory ={gettingCategory} eAdmitCard={eAdmitCard} setEAdmitCard={setEAdmitCard} /></div>
           <div className='multiple'>
-            {
+            { eAdmitCard.length === 0 ? (<p className='data-not-found'>Data Not Found!</p>) :
               eAdmitCard.map((item) => {
                 const {college_name, college_logo, college_address,web_link} = item;
                 return (

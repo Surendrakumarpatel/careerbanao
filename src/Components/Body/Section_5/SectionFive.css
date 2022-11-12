@@ -77,6 +77,7 @@
   font-size: 15px;
   font-family: sans-serif;
   max-height: 67px;
+  text-align: center;
 }
 
 .myCarousel p:before {
@@ -107,6 +108,12 @@
   height: 50px !important;
   position: absolute;
   top: 35% !important;
+}
+.data-not-found{
+   margin-bottom: 4rem;
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
 }
  
 @media only screen and (max-width:768px) {

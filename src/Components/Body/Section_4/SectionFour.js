@@ -66,7 +66,7 @@ function SectionFour() {
       await axios.post(URL, JSON.stringify(values)).then((res) => {
         toast.success('Submitted Successfully!', {
           position: "top-center",
-          autoClose: 5000,
+          autoClose: 1000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,

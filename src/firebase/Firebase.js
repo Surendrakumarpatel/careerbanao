@@ -6,7 +6,6 @@ import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyB_980hp5kxx_1gthuhaqJXK8GnkiP7Tfo",
   authDomain: "career-banao-8d28b.firebaseapp.com",
-  nextAuthDomain:"http://preprod.kalkaprasad.com",
   projectId: "career-banao-8d28b",
   storageBucket: "career-banao-8d28b.appspot.com",
   messagingSenderId: "802663630186",

@@ -18,7 +18,7 @@ function Footer() {
           <div className="footer-content">
             <div className="footer-content-column">
               <div className="footer-logo">
-                <a className="footer-logo-link" href="#">
+                <a className="footer-logo-link">
                   <span className="hidden-link-text">LOGO</span>
                   <h2>CareerBanao</h2>
                 </a>
@@ -48,25 +48,25 @@ function Footer() {
                 <h2 className="footer-menu-name">Experts From</h2>
                 <ul id="menu-company" className="footer-menu-list">
                   <li className="menu-item menu-item-type-post_type menu-item-object-page">
-                    <a href="#">DELHI NCR</a>
+                    DELHI NCR 
                   </li>
                   <li className="menu-item menu-item-type-taxonomy menu-item-object-category">
-                    <a href="#">BANGALORE</a>
+                    BANGALORE 
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page">
-                    <a href="#">PUNE</a>
+                     PUNE 
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page">
-                    <a href="#">PUNJAB</a>
+                     PUNJAB 
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page">
-                    <a href="#">UTTAR PRADESH</a>
+                     UTTAR PRADESH 
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page">
-                    <a href="#">BIHAR</a>
+                    BIHAR
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page">
-                    <a href="#">JHARKHAND</a>
+                  JHARKHAND
                   </li>
                 </ul>
               </div>
@@ -74,10 +74,10 @@ function Footer() {
                 <h2 className="footer-menu-name"> Legal</h2>
                 <ul id="menu-legal" className="footer-menu-list">
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-170434">
-                    <a href="#">Privacy Notice</a>
+                     Privacy Notice 
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page">
-                    <a href="#">Terms of Use</a>
+                  Terms of Use 
                   </li>
                 </ul>
               </div>
@@ -87,21 +87,21 @@ function Footer() {
                 <h2 className="footer-menu-name"> Quick Links</h2>
                 <ul id="menu-quick-links" className="footer-menu-list">
                   <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                    <a target="_blank" rel="noopener noreferrer" href="#">Support Center</a>
+                     Support Center 
                   </li>
                   <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                    <a target="_blank" rel="noopener noreferrer" href="#">Service Status</a>
+                    Service Status 
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page">
-                    <a href="#">Security</a>
+                     Security 
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page">
-                    <a href="#">Blog</a>
+                     Blog 
                   </li>
                   <li className="menu-item menu-item-type-post_type_archive menu-item-object-customer">
-                    <a href="#">Customers</a></li>
+                    Customers</li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page">
-                    <a href="#">Reviews</a>
+                     Reviews 
                   </li>
                 </ul>
               </div>
@@ -144,7 +144,7 @@ function Footer() {
           <div className="footer-copyright">
             <div className="footer-copyright-wrapper">
               <p className="footer-copyright-text">
-                <a className="footer-copyright-link" href="#" target="_self"> ©2022. | Designed By: Surendra Kumar Patel & Pranav Tyagi. | All rights reserved. </a>
+                <a className="footer-copyright-link"  target="_self"> ©2022. | Designed By:<a href="https://www.linkedin.com/in/surendrakumar143/" target="blank" style={{color:"white"}}>Surendra Kumar Patel</a>  & <a href="https://www.linkedin.com/in/pranav-tyagi-/" style={{color:"white"}} target ="blank" >Pranav Tyagi</a>. | All rights reserved. </a>
               </p>
             </div>
           </div>

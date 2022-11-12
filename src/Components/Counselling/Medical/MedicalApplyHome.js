@@ -10,6 +10,9 @@ import { BaseUrl } from '../../baseurl/baseurl';
 
 function MedicalApplyHome() {
   const location = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]);
   const newEvents = location.state.news_event;
   const allNewsEvent = newEvents.split(",");
   const [applyHomeData, setApplyHomeData] = useState([{

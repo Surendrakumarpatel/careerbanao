@@ -5,9 +5,13 @@ import ResNavbar from '../../Navbar/ResNavbar';
 import MedicalExams from './MedicalExams';
 import Footer from '../../Body/Section_6/Footer';
 import {BaseUrl} from "../../baseurl/baseurl";
-
+import { useLocation } from "react-router-dom"
 
 function MedicalCounselling() {
+    const location = useLocation();
+  useEffect(() => {
+      window.scrollTo(0, 0);
+  }, [location]);
   const [medicalData, setMedicalData] = useState([]);
 
   const gettingCategory =  (categData) =>{
@@ -30,7 +34,8 @@ function MedicalCounselling() {
                 <div className='filter-collegeExam'>
                     <div className='fil'><Filtering gettingCategory ={gettingCategory} medicalData={medicalData} setMedicalData={setMedicalData} /></div>
                     <div className='multiple'>
-                        {
+
+                        {   medicalData.length === 0 ? (<p className='data-not-found'>Data Not Found!</p>) :
                             medicalData.map((item) => {
                                 const {college_name, college_logo, apply_link, college_address, Last_date, college_category,latest_news,news_event,Introduction } = item;
                                 return (
