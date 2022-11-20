@@ -7,6 +7,9 @@ import MedicalResults from './MedicalResults';
 import Footer from '../../Body/Section_6/Footer';
 import { BaseUrl } from '../../baseurl/baseurl';
 import { useLocation } from "react-router-dom"
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 function MedicalResult() {
   const location = useLocation();
@@ -14,6 +17,7 @@ function MedicalResult() {
     window.scrollTo(0, 0);
   }, [location]);
   const [mResult, setMResult] = useState([]);
+  const [flag, setFlag] = useState(null);
 
   const gettingCategory = (categData) => {
     getApiData(categData);
@@ -22,6 +26,7 @@ function MedicalResult() {
   const getApiData = async (categData) => {
     await axios.get(`${BaseUrl}/getResultMed?category=${categData}`).then((res, req) => {
       setMResult(res.data);
+      setFlag(res);
     });
   }
   useEffect(() => {
@@ -36,25 +41,30 @@ function MedicalResult() {
 
           <div className='fil'><Filtering gettingCategory={gettingCategory} mResult={mResult} setMResult={setMResult} /></div>
           <div className='multiple'>
-            { mResult.length === 0 ? (<p className='data-not-found'>Data Not Found!</p>) :
-              mResult.map((item) => {
-                const { college_logo, college_name, web_link, college_category, college_address } = item;
-                return (
-                  <>
-                    <div className='exm'><MedicalResults
-                      // CollegeName={CollegeName}
-                      // CollegeImg={CollegeImg}
-                      ExamLogo={college_logo}
-                      ExamName={college_name}
-                      ExamsLink={web_link}
-                      CollegeAddress={college_address}
-                      category={college_category}
-                    /></div>
+            {flag === null ? (<Backdrop
+              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              open >
+              <CircularProgress color="inherit" />
+            </Backdrop>) :
+              mResult.length === 0 ? "Data not found!" :
+                mResult.map((item) => {
+                  const { college_logo, college_name, web_link, college_category, college_address } = item;
+                  return (
+                    <>
+                      <div className='exm'><MedicalResults
+                        // CollegeName={CollegeName}
+                        // CollegeImg={CollegeImg}
+                        ExamLogo={college_logo}
+                        ExamName={college_name}
+                        ExamsLink={web_link}
+                        CollegeAddress={college_address}
+                        category={college_category}
+                      /></div>
 
-                  </>
+                    </>
 
-                )
-              })
+                  )
+                })
 
             }
 

@@ -5,7 +5,10 @@ import ResNavbar from '../../Navbar/ResNavbar';
 import Footer from '../../Body/Section_6/Footer';
 import MedicalAc from './MedicalAc';
 import { BaseUrl } from "../../baseurl/baseurl";
-import { useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 function MedicalAdmitCard() {
   const location = useLocation();
@@ -13,6 +16,7 @@ function MedicalAdmitCard() {
     window.scrollTo(0, 0);
   }, [location]);
   const [mAdmitCard, setMAdmitCard] = useState([]);
+  const [flag, setFlag] = useState(null);
 
 
   const gettingCategory = (categData) => {
@@ -22,6 +26,7 @@ function MedicalAdmitCard() {
   const getApiData = async (categData) => {
     await axios.get(`${BaseUrl}/getAdmitMed?category=${categData}`).then((res, req) => {
       setMAdmitCard(res.data);
+      setFlag(res);
     });
   }
   useEffect(() => {
@@ -38,7 +43,12 @@ function MedicalAdmitCard() {
 
           <div className='fil'><Filtering gettingCategory={gettingCategory} mAdmitCard={mAdmitCard} setMAdmitCard={setMAdmitCard} /></div>
           <div className='multiple'>
-            { mAdmitCard.length === 0 ? (<p className='data-not-found'>Data Not Found!</p>) :
+            { flag === null ? (<Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open >
+                <CircularProgress color="inherit" />
+              </Backdrop>) :
+              mAdmitCard.length === 0 ? "Data not found!" :
               mAdmitCard.map((item) => {
                 const { college_name, college_logo, college_address, web_link } = item;
                 return (

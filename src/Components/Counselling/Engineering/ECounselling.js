@@ -6,52 +6,120 @@ import Footer from '../../Body/Section_6/Footer';
 import ECounsellingLink from './ECounsellingLink';
 import { BaseUrl } from '../../baseurl/baseurl';
 import { useLocation } from "react-router-dom"
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+ 
 
 function ECounselling() {
-    const location = useLocation();
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [location]);
-    const [eCounsellingData, setECounsellingData] = useState([]);
-    useEffect(() => {
-        axios.get(`${BaseUrl}/getCounslingDetails`).then((res, req) => {
-            console.log(res.data);
-            setECounsellingData(res.data);
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+  const [eCounsellingData, setECounsellingData] = useState([]);
+  const [flag, setFlag] = useState(null);
+  useEffect(() => {
+    axios.get(`${BaseUrl}/getCounslingDetails`).then((res, req) => {
+      console.log(res.data);
+      setECounsellingData(res.data);
+      setFlag(res);
+    }).catch((err) => {
+      console.log(err);
+    })
 
-        }).catch((err) => {
-            console.log(err);
-        })
+  }, []);
 
-    }, []);
 
-    return (
-        <div>
-            <ResNavbar />
-            <div className="grid-boxes">
-                <div className='c-and-social'>
-                    <div className='admission-and-counselling'><h1>Admission And Counselling</h1></div>
-                    <div class="grid">
-                        {   eCounsellingData.length === 0 ? (<p className='data-not-found'>Data Not Found!</p>) :
-                            eCounsellingData.map((items) => {
-                                const { college_name, college_logo, web_link, lates_news, new_event, introduction } = items;
-                                return (
-                                    <ECounsellingLink
-                                        college_logo={college_logo}
-                                        college_name={college_name}
-                                        Intro={introduction}
-                                        latest_news={lates_news}
-                                        news_event={new_event}
-                                        apply_link={web_link}
-                                    />
-                                );
-                            })
-                        }
-                    </div>
-                </div>
-            </div>
-            <Footer />
+  return (
+    <div>
+      <ResNavbar />
+      <div className="main">
+        <h1 className='a-and-c'>Admission and Counselling</h1>
+        <ul className="cards">
+          {
+            flag === null ? (<Backdrop
+              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              open >
+              <CircularProgress color="inherit" />
+            </Backdrop>) :
+              eCounsellingData.length === 0 ? "Data Not Found!" :
+                eCounsellingData.map((items) => {
+                  const { college_name, college_logo, web_link, lates_news, new_event, introduction } = items;
+                  return (
+                    <ECounsellingLink
+                      college_logo={college_logo}
+                      college_name={college_name}
+                      Intro={introduction}
+                      latest_news={lates_news}
+                      news_event={new_event}
+                      apply_link={web_link}
+                    />
+                  );
+                })
+          }
+        </ul>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* <div classNameName="grid-boxes">
+        <div classNameName='c-and-social'>
+          <div classNameName='admission-and-counselling'><h1>Admission And Counselling</h1></div>
+          <div classNameName="grid">
+            {eCounsellingData.length === 0 ? (<p classNameName='data-not-found'>Data Not Found!</p>) :
+              eCounsellingData.map((items) => {
+                const { college_name, college_logo, web_link, lates_news, new_event, introduction } = items;
+                return (
+                  <ECounsellingLink
+                    college_logo={college_logo}
+                    college_name={college_name}
+                    Intro={introduction}
+                    latest_news={lates_news}
+                    news_event={new_event}
+                    apply_link={web_link}
+                  />
+                );
+              })
+            }
+          </div>
         </div>
-    );
+      </div> */}
+      {/* <div classNameName="grid-boxes">
+        <h1 className='a-and-c'>Admission And Counselling</h1>
+        <div classNameName="grid">
+          {eCounsellingData.length === 0 ? (<p classNameName='data-not-found'>Data Not Found!</p>) :
+            eCounsellingData.map((items) => {
+              const { college_name, college_logo, web_link, lates_news, new_event, introduction } = items;
+              return (
+                <ECounsellingLink
+                  college_logo={college_logo}
+                  college_name={college_name}
+                  Intro={introduction}
+                  latest_news={lates_news}
+                  news_event={new_event}
+                  apply_link={web_link}
+                />
+              );
+            })
+          }
+        </div>
+      </div> */}
+
+      <Footer />
+    </div>
+  );
 };
 
 export default ECounselling;

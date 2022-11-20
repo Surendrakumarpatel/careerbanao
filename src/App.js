@@ -12,7 +12,7 @@ import Contact from './Components/Contact/Contact';
 import ECounselling from './Components/Counselling/Engineering/ECounselling';
 import ApplyHome from './Components/Counselling/Engineering/ApplyHome';
 import ApplicationApply from './Components/Application/Engineering/ApplicationApply';
-import MCounselling from './Components/Counselling/Medical/ECounselling';
+import MCounselling from './Components/Counselling/Medical/MCounselling';
 import MedicalApplyHome from './Components/Counselling/Medical/MedicalApplyHome';
 import MApplicationApply from './Components/Application/Medical/MApplicationApply';
 import { AuthContextProvider } from './Context/AuthContext';

@@ -6,7 +6,10 @@ import Filtering from './Filtering';
 import "./EngineeringCounselling.css";
 import ResNavbar from '../../Navbar/ResNavbar';
 import {BaseUrl} from "../../baseurl/baseurl";
-import { useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+ 
 
 function EngineeringCounselling() {
   const location = useLocation();
@@ -14,6 +17,7 @@ function EngineeringCounselling() {
       window.scrollTo(0, 0);
   }, [location]);
   const [items, setItems] = useState([]);
+  const [flag, setFlag] = useState(null);
   const length = items.length;
   console.log("array length: "+ length);
   const gettingCategory =  (categData) =>{
@@ -22,6 +26,7 @@ function EngineeringCounselling() {
   const getApiData = async (categData) => {
     await axios.get(`${BaseUrl}/getApplicationDetailsEng?category=${categData}`).then((res, req)=>{
         setItems(res.data);
+        setFlag(res);
     });
   }
   useEffect(() => {
@@ -34,9 +39,14 @@ function EngineeringCounselling() {
       <div className='exam-section'>
         <div className='filter-collegeExam'>
           <div className='fil'><Filtering gettingCategory = {gettingCategory} items={items} setItems={setItems}/></div>
-          <div className='multiple'>
+          <div className= 'multiple'>
             {
-              items.length === 0 ? (<p className='data-not-found'>Data Not Found!</p>) :
+              flag === null ? (<Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open >
+                <CircularProgress color="inherit" />
+              </Backdrop>) :
+              items.length === 0 ? "Data not found!" :
               (items.map((item) => {
                 const {id,college_name, college_logo, apply_link, college_address, Last_date, college_category, latest_news, news_event, Introduction } = item;
                 
