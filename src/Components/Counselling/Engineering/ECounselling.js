@@ -8,7 +8,7 @@ import { BaseUrl } from '../../baseurl/baseurl';
 import { useLocation } from "react-router-dom"
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
- 
+
 
 function ECounselling() {
   const location = useLocation();
@@ -58,65 +58,6 @@ function ECounselling() {
           }
         </ul>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      {/* <div classNameName="grid-boxes">
-        <div classNameName='c-and-social'>
-          <div classNameName='admission-and-counselling'><h1>Admission And Counselling</h1></div>
-          <div classNameName="grid">
-            {eCounsellingData.length === 0 ? (<p classNameName='data-not-found'>Data Not Found!</p>) :
-              eCounsellingData.map((items) => {
-                const { college_name, college_logo, web_link, lates_news, new_event, introduction } = items;
-                return (
-                  <ECounsellingLink
-                    college_logo={college_logo}
-                    college_name={college_name}
-                    Intro={introduction}
-                    latest_news={lates_news}
-                    news_event={new_event}
-                    apply_link={web_link}
-                  />
-                );
-              })
-            }
-          </div>
-        </div>
-      </div> */}
-      {/* <div classNameName="grid-boxes">
-        <h1 className='a-and-c'>Admission And Counselling</h1>
-        <div classNameName="grid">
-          {eCounsellingData.length === 0 ? (<p classNameName='data-not-found'>Data Not Found!</p>) :
-            eCounsellingData.map((items) => {
-              const { college_name, college_logo, web_link, lates_news, new_event, introduction } = items;
-              return (
-                <ECounsellingLink
-                  college_logo={college_logo}
-                  college_name={college_name}
-                  Intro={introduction}
-                  latest_news={lates_news}
-                  news_event={new_event}
-                  apply_link={web_link}
-                />
-              );
-            })
-          }
-        </div>
-      </div> */}
-
       <Footer />
     </div>
   );
