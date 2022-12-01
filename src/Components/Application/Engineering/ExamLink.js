@@ -5,6 +5,7 @@ import "./ExamLink.css";
 function ExamLink({ id, ExamLogo, ExamName, apply_link, CollegeAddress, Last_date, latest_news, news_event, Intro }) {
   const navigate = useNavigate();
 
+  // Using navigate for routing to the next page and sending data to the page
   const switchToApplyHomePage = () => {
     navigate("/applicationapply", { state: { id: 1, intro: Intro, latest_news: latest_news, news_event: news_event, apply_link: apply_link } });
   }

@@ -129,9 +129,9 @@ function ResNavbar() {
                                     {
                                         user ? (
                                             <>
-                                                <Link to="/ecounselling" style={{ color: "white", cursor: "pointer" }}><li >Engineering</li></Link>
+                                                <Link to="/ecounselling" style={{ color: "white", cursor: "pointer" }}><li>Engineering</li></Link>
                                                 
-                                                <Link to="/mcounselling" style={{ color: "white", cursor: "pointer" }}><li >Medical</li></Link>
+                                                <Link to="/mcounselling" style={{ color: "white", cursor: "pointer" }}><li>Medical</li></Link>
                                                 
                                             </>
                                         ) :

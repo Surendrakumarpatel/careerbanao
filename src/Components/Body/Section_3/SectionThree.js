@@ -1,8 +1,8 @@
 import React from 'react'
 import './SectionThree.css';
 
-
 function SectionThree() {
+ 
   return (
     <div className='section-three'>
       <div className='steps-to-reach-cb-text'>

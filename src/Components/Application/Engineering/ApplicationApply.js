@@ -10,7 +10,9 @@ import { useLocation } from "react-router-dom"
 import {BaseUrl} from "../../baseurl/baseurl";
 
 function ApplicationApply() {
+  // Using uselocation for getting data from where data is coming 
   const location = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
@@ -20,13 +22,16 @@ function ApplicationApply() {
     introduction: "loading...",
     late_news: "loading...",
   }]);
+
+  // useEffect is function to render atleast once whene we are passing nothing inside 
+  // Array dependencies
   useEffect(() => {
     axios.get(`${BaseUrl}/getApplicationDetailsEng`).then((res, req) => {
       //    console.log(res.data);
       setApplyHomeData(res.data);
     }).catch((err) => {
       console.log(err);
-    })
+    }) 
 
   }, []);
 
@@ -46,7 +51,7 @@ function ApplicationApply() {
           <h1>Introduction</h1>
           <p>{location.state.intro}</p>
           {/* <p>{applyHomeData[0].Introduction}</p> */}
-          <a href={location.state.apply_link} target="blank"><Button variant="contained" >Apply Now</Button></a>
+          <a href={location.state.apply_link} target="blank"><Button variant="contained">Apply Now</Button></a>
         </div>
         <div className='news-and-events'>
           <h1>News & Events</h1>

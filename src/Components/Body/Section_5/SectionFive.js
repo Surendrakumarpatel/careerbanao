@@ -79,9 +79,7 @@ function SectionFive() {
       console.log(err);
     })
   }, []);
-
-  console.log("testimoial:" + testimonialData);
-
+ 
   return (
     <div className='section-five'>
       <div className='testimonials'>

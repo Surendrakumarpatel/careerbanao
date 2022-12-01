@@ -6,7 +6,8 @@ import {BaseUrl} from "../../baseurl/baseurl";
 
 function ApplyHomeSlider() {
 
-    const [banner, setBanner] = useState("https://unsplash.com/blog/content/images/size/w600/2022/06/A_look_back_at_May_-Blog--1.jpeg")
+    const [banner, setBanner] = useState([])
+    
     useEffect(() => {
         axios.get(`${BaseUrl}/getBannerAPI`,).then((res) => {
             setBanner(res.data);

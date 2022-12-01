@@ -72,7 +72,7 @@ function Footer() {
               </div>
               <div className="footer-menu">
                 <h2 className="footer-menu-name"> Legal</h2>
-                <ul id="menu-legal" className="footer-menu-list">
+                <ul id="menu-legal" className="footer-menu-list" >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-170434">
                      Privacy Notice 
                   </li>

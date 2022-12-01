@@ -15,10 +15,10 @@ function ECounsellingLink({ college_logo, college_name, Intro, latest_news, news
                        <img className='clogo' src={college_logo}></img>
                        <h1 className='college-name-text'>{college_name}</h1>
                     </div>
-                     <div className="counselling-links">
+                    <div className="counselling-links">
                          <SwipeRightIcon className="clickicon" />
                          <a className='click-here' onClick={switchToApplyHomePage}>click here</a>
-                     </div>
+                    </div>
                 </div>
             </div>
         </li>

@@ -49,15 +49,17 @@ function SectionFour() {
     })
   }, []);
 
+  // this is for open popup
   const handleClickOpen = (type) => {
     setOpen(true);
     initialValues.type=type
   };
+    // this is for close popup
   const handleClose = () => {
     setOpen(false);
   };
 
-  // Form validation formik and Yup
+  // This is formik and Yup library for form validation  
   const Formik = useFormik({
     initialValues: initialValues,
     validationSchema: VideoCallValidation,
@@ -78,7 +80,6 @@ function SectionFour() {
           }).catch((err) => {
             console.log(err);
           })
-      console.log(values);
       action.resetForm();
     }
   });
@@ -156,7 +157,7 @@ function SectionFour() {
                 style={{ marginTop: "0.5rem" }}
                 id="standard-basic"
                 label="Email"
-                variant="standard" />
+                variant="standard"/>
                 <p className='form-error'>{Formik.errors.email}</p>
               <Button type="submit" style={{ marginTop: "2rem", color: "white", background: "#49387f" }}>Submit</Button>
             </form>

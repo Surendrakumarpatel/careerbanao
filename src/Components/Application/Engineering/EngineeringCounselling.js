@@ -13,29 +13,35 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 function EngineeringCounselling() {
   const location = useLocation();
+
   useEffect(() => {
       window.scrollTo(0, 0);
   }, [location]);
-  const [items, setItems] = useState([]);
+
+  // items is a array where we are storing all the data from ApplicationDetailsEng api
+  const [items, setItems] = useState([]); // useState is react hooks
   const [flag, setFlag] = useState(null);
   const length = items.length;
-  console.log("array length: "+ length);
+  
+  // gettingCategory is used for get category like private or gov
   const gettingCategory =  (categData) =>{
     getApiData(categData);
   }
+
   const getApiData = async (categData) => {
     await axios.get(`${BaseUrl}/getApplicationDetailsEng?category=${categData}`).then((res, req)=>{
         setItems(res.data);
         setFlag(res);
     });
   }
+
   useEffect(() => {
     getApiData("");
   }, []);
   
   return (
     <div className='engineering-c'>
-      <ResNavbar />
+      <ResNavbar /> 
       <div className='exam-section'>
         <div className='filter-collegeExam'>
           <div className='fil'><Filtering gettingCategory = {gettingCategory} items={items} setItems={setItems}/></div>
@@ -48,10 +54,10 @@ function EngineeringCounselling() {
               </Backdrop>) :
               items.length === 0 ? "Data not found!" :
               (items.map((item) => {
+                // Array destructuring in javascript getting all the details
                 const {id,college_name, college_logo, apply_link, college_address, Last_date, college_category, latest_news, news_event, Introduction } = item;
-                
                 return (
-                  <>
+                  <div>
                     <div className='exm'><Exams
                       id = {id}
                       college_name={college_name}
@@ -65,7 +71,7 @@ function EngineeringCounselling() {
                       Intro={Introduction}
                     /></div>
                     
-                  </>
+                  </div>
                 )
               }))
              

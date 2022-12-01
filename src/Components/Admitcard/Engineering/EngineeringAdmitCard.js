@@ -53,7 +53,9 @@ function EngineeringAdmitCard() {
                 eAdmitCard.map((item) => {
                   const { college_name, college_logo, college_address, web_link } = item;
                   return (
-                    <>
+                    <> 
+                     {/* Ac is component where all the data coming from EngineringAdmit card folder 
+                     and calling every time using map function */}
                       <div className='exm'><Ac
                         // CollegeName={college_name}
                         // CollegeImg={CollegeImg}

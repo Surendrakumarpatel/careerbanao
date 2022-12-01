@@ -12,14 +12,15 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 function ECounselling() {
   const location = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
   const [eCounsellingData, setECounsellingData] = useState([]);
   const [flag, setFlag] = useState(null);
   useEffect(() => {
     axios.get(`${BaseUrl}/getCounslingDetails`).then((res, req) => {
-      console.log(res.data);
       setECounsellingData(res.data);
       setFlag(res);
     }).catch((err) => {

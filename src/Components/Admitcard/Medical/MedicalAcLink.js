@@ -15,7 +15,6 @@ function MedicalAcLink({ExamLogo,ExamName,ExamsLink,CollegeAddress}) {
              <a style={{color:"black"}} href={ExamsLink} target="blank"><button>Admit card</button></a>
           </div>
         </div>
-         
     </div>
   )
 }

@@ -3,6 +3,7 @@ import './SectionOne.css';
 import Button from '@mui/material/Button';
  
 function SectionOne() {
+
     return (
         <div className='sectionOne'>
             <div className='sec_1'>
@@ -20,7 +21,7 @@ function SectionOne() {
                      <div className='logo_1'>
                         <img src='https://yourdost-images.s3-ap-southeast-1.amazonaws.com/newHome/b2b-assets/iitmadras.png'></img>
                      </div>
-                     <div className='logo_1 bc'><img src='	https://yourdost-images.s3-ap-southeast-1.amazonaws.com/newHome/b2b-assets/srm.png'></img>
+                     <div className='logo_1 bc'><img src='https://yourdost-images.s3-ap-southeast-1.amazonaws.com/newHome/b2b-assets/srm.png'></img>
                      </div>
                      <div className='logo_1'><img src='https://yourdost-images.s3-ap-southeast-1.amazonaws.com/newHome/b2b-assets/iitkgp+logo.png'></img>
                      </div>

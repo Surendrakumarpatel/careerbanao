@@ -20,6 +20,7 @@ import { AuthContextProvider } from './Context/AuthContext';
 function App() {
   
   return (
+    // Using firebase for login with google and wrapping app Component
     <AuthContextProvider>
       <div className="App">
         <BrowserRouter>
@@ -42,7 +43,6 @@ function App() {
             <Route path="/mapplicationapply" element={<MApplicationApply />} />
           </Routes>
         </BrowserRouter>
-
       </div>
     </AuthContextProvider>
 
